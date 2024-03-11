@@ -32,7 +32,7 @@
       
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('landing.index') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -49,41 +49,41 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="jadwalMakan.html">
+        <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Atur Makanan</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="jadwalMinum.html">
+        <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Atur Minuman</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="edit_user.html">
+        <a class="nav-link" href="{{ route('landing.edit_user') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit User</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="edit_hewan.html">
+        <a class="nav-link"href="{{ route('landing.edit_hewan') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit hewan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="login.html">
+        <a class="nav-link" href="{{ route('landing.login') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="register.html">
+        <a class="nav-link" href="{{ route('landing.register') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Register</span>
         </a>

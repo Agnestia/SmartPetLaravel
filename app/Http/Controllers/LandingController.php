@@ -21,6 +21,37 @@ class LandingController extends Controller
         //
         return view('landing.lokasi_hewan');
     }
+    public function jadwalMakan()
+    {
+        //
+        return view('landing.jadwalMakan');
+    }
+    public function jadwalMinum()
+    {
+        //
+        return view('landing.jadwalMinum');
+    }
+    
+    public function edit_user()
+    {
+        //
+        return view('landing.edit_user');
+    }
+    public function edit_hewan()
+    {
+        //
+        return view('landing.edit_hewan');
+    }
+    public function login()
+    {
+        //
+        return view('landing.login');
+    }
+    public function register()
+    {
+        //
+        return view('landing.register');
+    }
 
     /**
      * Show the form for creating a new resource.
