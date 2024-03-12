@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,17 +13,30 @@ class UserController extends Controller
     }
     public function loginPage()
     {
-        return view('landing.login');
+        return view('user.login');
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        return view('user.forgot');
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->route('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function registerPage()
     {
-        return view('landing.register');
+        return view('user.register');
     }
 
     public function register()
@@ -32,7 +46,7 @@ class UserController extends Controller
 
     public function editPage()
     {
-        return view('landing.edit_user');
+        return view('user.editPage');
     }
 
     public function edit()
@@ -40,8 +54,14 @@ class UserController extends Controller
         return view('user.edit');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        return view('user.profile');
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

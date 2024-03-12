@@ -14,8 +14,6 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
     <script src="vendor/jquery/jquery.js"></script>
-
-
 </head>
 
 <body id="page-top">
@@ -31,10 +29,10 @@
           </div>
         </div>
       </a>
-      
+
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('landing.index') }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -44,19 +42,19 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.lokasi_hewan') }}">
+        <a class="nav-link" href="{{ route('pet.location') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Lokasi Hewan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Atur Makanan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
           <i class="fas fa-fw fa-palette"></i>
@@ -65,33 +63,33 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.edit_user') }}">
+        <a class="nav-link" href="{{ route('user.editPage') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit User</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
-        <a class="nav-link"href="{{ route('landing.edit_hewan') }}">
+        <a class="nav-link"href="{{ route('pet.editPage') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit hewan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.login') }}">
+        <a class="nav-link" href="{{ route('login') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.register') }}">
+        <a class="nav-link" href="{{ route('register') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Register</span>
         </a>
       </li>
-     
-      
+
+
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
@@ -99,13 +97,14 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
 
+
     <!-- end sidebar -->
                 <!-- TopBar -->
                 <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
                     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <span class=" ml-1 d-none d-lg-inline text-white font-weight-bold font-size-5">Atur Makanan</span>
+                    <span class=" ml-1 d-none d-lg-inline text-white font-weight-bold font-size-5">Edit User</span>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -296,197 +295,101 @@
                 <!-- Main Content -->
                 <div class="container">
                     <div class="container row">
-                        <div class="col m-2">
-                            <div class="container bg-white py-4 rounded shadow">
-                                <div class="container d-flex justify-content-center-start ">
-                                    <h4 class="mt-3"style="color: black;">Jadwal Minum Otomatis</h4> 
+                        <!-- foto -->
+                        <div class="container col-lg-3">
+                            <div class="d-flex justify-content-center mb-4">
+                                <img id="selectedAvatar" src="./img/ramadhanfoto.png" class="rounded-circle"
+                                    style="width: 150px; height: 150px; object-fit: cover;" alt="example placeholder" />
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-primary btn-rounded">
+                                    <label class="form-label text-white m-1" for="inputPhoto">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-plus" viewBox="0 0 15 15">
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                        </svg>
+                                    </label>
+                                    <input type="file" class="form-control d-none" id="inputPhoto"
+                                        onchange="displaySelectedImage(event, 'selectedAvatar')" />
                                 </div>
-                                <form action="">
-                                    <div class="row">
-                                       
-                                        <div class="col-md-9">
-                                            <div class="form-group row mt-4 md-2">
-                                                <label for="inputNamaHewan" class="col-form-label col-md-3 ">Tanggal</label>
-                                                <div class="col-lg-9 pl-5">
-                                                    <input type="date" class="form-control form-control-sm " id="inputNamaHewan"
-                                                        placeholder="Rocky" style="width: 150px;">
-                                                        <input type="date" class="form-control form-control-sm mt-2" id="inputNamaHewan"
-                                                        placeholder="Rocky" style="width: 150px;">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Berat</label>
-                                                <div class="col-lg-9 pl-5">
-                                                    <input type="number" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Per Gram" style="width: 150px">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Jam</label>
-                                                <div class="col-lg-9 pl-5">
-                                                <div id="inputJamContainer">
-                                                    <input type="time" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Kucing" style="width: 150px;">
-                                                        <button type="button" class="btn btn-sm btn-secondary ml-2 mt-2" id="addInputJam">+</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row text-right">
-                                        <div class="col-lg-1">
-                                            <button type="submit" class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="table-responsive">
-                                        <table class="table table-bordered text-center"style=" font-size: 14px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="table-active">Tanggal</th>
-                                                    <th class="table-active">Jam</th>
-                                                    <th class="table-active">Berat</th>
-                                                    <th class="table-active">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-success">checkist</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-info">Processing</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                const addInputJamButton = document.getElementById("addInputJam");
-                                const inputJamContainer = document.getElementById("inputJamContainer");
-                                let inputCounter = 1;
-                        
-                                addInputJamButton.addEventListener("click", function() {
-                                    if (inputCounter < 3) { // Memeriksa apakah sudah mencapai batas maksimal
-                                        inputCounter++;
-                        
-                                        const newInputJam = document.createElement("input");
-                                        newInputJam.type = "time";
-                                        newInputJam.classList.add("form-control", "form-control-sm", "mt-2");
-                                        newInputJam.style.width = "150px";
-                                        newInputJam.id = "inputJam" + inputCounter;
-                        
-                                        inputJamContainer.insertBefore(newInputJam, addInputJamButton);
-                        
-                                        if (inputCounter === 3) {
-                                            addInputJamButton.textContent = '-';
-                                            addInputJamButton.classList.add("btn-danger");
-                                            addInputJamButton.classList.remove("btn-secondary");
-                                        }
-                                    } else {
-                                        const secondInputJam = document.getElementById("inputJam2");
-                                        const thirdInputJam = document.getElementById("inputJam3");
-                                        inputJamContainer.removeChild(secondInputJam);
-                                        inputJamContainer.removeChild(thirdInputJam);
-                                        inputCounter -= 2;
-                        
-                                        addInputJamButton.textContent = '+';
-                                        addInputJamButton.classList.remove("btn-danger");
-                                        addInputJamButton.classList.add("btn-secondary");
-                                    }
-                                });
-                            });
-                        </script>
-                        
-                        
-                        
-                        
-                        <div class="col m-2">
-                            <div class="container bg-white py-4 rounded shadow">
-                                <div class="container d-flex justify-content-center-start ">
-                                    <h4 class="mt-3"style="color: black;">Jadwal Minum Otomatis</h4> 
+                        <!-- form edit -->
+                        <div class="container col-lg-9 bg-white px-5 pt-4 rounded shadow">
+                            <form class="pt-1">
+                                <div class="form-group row">
+                                    <label for="inputNama" class="col-form-label col-md-1">Nama</label>
+                                    <div class="col-lg-11">
+                                        <input type="text" class="form-control" id="inputNama" placeholder="Ramadhan">
+                                    </div>
                                 </div>
-                                <form action="">
-                                    <div class="row">       
-
-                                        <div class="col-md-9 mt-2">
-                                            <div class="form-group row mt-4 md-2">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Berat</label>
-                                                <div class="col-lg-9 pl-5">
-                                                    <input type="number" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Per Gram" style="width: 150px">
-                                                </div>
-                                            </div>
-                                        
-                                        </div>
+                                <div class="form-group row">
+                                    <label for="inputAlamat" class="col-form-label col-md-1">Alamat</label>
+                                    <div class="col-lg-11">
+                                        <input type="text" class="form-control" id="inputAlamat"
+                                            placeholder="Jl. semarang 44">
                                     </div>
-                                    <div class="container">
-                                        <div class="table-responsive">
-                                        <table class="table table-bordered text-center"style=" font-size: 14px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="table-active">Tanggal</th>
-                                                    <th class="table-active">Jam</th>
-                                                    <th class="table-active">Berat</th>
-                                                    <th class="table-active">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-success">checkist</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-info">Processing</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputTelepon" class="col-form-label col-md-1">No.Tlp</label>
+                                    <div class="col-lg-11">
+                                        <input type="text" class="form-control" id="inputTelepon"
+                                            placeholder="086951442">
                                     </div>
-                                    <div class="form-group row text-right">
-                                        <div class="col-lg-1">
-                                            <button type="submit" class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail" class="col-form-label col-md-1">Email</label>
+                                    <div class="col-lg-11">
+                                        <input type="email" class="form-control" id="inputEmail"
+                                            placeholder="ramadhan@gmail.com">
                                     </div>
-                                    
-                                </form>
-                            </div>
+                                </div>
+                                <div class="form-group row text-right">
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <hr class="mt-5">
-                  
+                    <div class="container mt-5">
+                        <div class="container bg-white px-5 pt-4 pb-2 rounded shadow">
+                            <form class="pt-2">
+                                <div class="form-group row">
+                                    <div class="col-lg-11">
+                                        <input type="password" class="form-control" id="passwordLama"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-11">
+                                        <input type="password" class="form-control" id="passwordBaru"
+                                            placeholder="Password Baru">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-11">
+                                        <input type="password" class="form-control" id="konfirmasiPassword"
+                                            placeholder="Konfirmasi Password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-11">
+                                        <a href="">Lupa Password ?</a>
+                                    </div>
+                                </div>
+                                <div class="form-group row text-right">
+                                    <div class="col-lg-11">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!---Main Content -->
             </div>
-           
-        </div>
-    </div>
 
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">

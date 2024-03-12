@@ -25,7 +25,8 @@
             <div class="card fat">
               <div class="card-body">
                 <h4 class="card-title">Login</h4>
-                <form method="POST" class="my-login-validation" novalidate="">
+                <form action={{ route('login') }} method="POST" class="my-login-validation" novalidate="">
+                  @csrf
                   <div class="form-group">
                     <label for="email">E-Mail Address</label>
                     <input
@@ -79,7 +80,7 @@
                   </div>
                   <div class="mt-4 text-center">
                     Don't have an account?
-                    <a href="{{ route('landing.register') }}">Create One</a>
+                    <a href="{{ route('register') }}">Create One</a>
                   </div>
                 </form>
               </div>

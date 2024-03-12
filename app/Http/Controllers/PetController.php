@@ -8,12 +8,12 @@ class PetController extends Controller
 {
     public function show()
     {
-        return view('landing.edit_hewan');
+        return view('pet.editPage');
     }
 
     public function location()
     {
-        return view('landing.lokasi_hewan');
+        return view('pet.location');
     }
 
     public function create()
