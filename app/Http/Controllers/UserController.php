@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,9 +45,11 @@ class UserController extends Controller
         return view('user.register');
     }
 
-    public function editPage()
+    public function editPage(User $user)
     {
-        return view('user.edit');
+        $user = $user->where('id', auth()->user()->id)->first();
+
+        return view('user.edit', compact('user'));
     }
 
     public function edit()

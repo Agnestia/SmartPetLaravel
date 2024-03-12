@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pet;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
-    public function show()
+    public function show(Pet $pet)
     {
-        return view('pet.editPage');
+        $pet = $pet->where('user_id', auth()->user()->id)->get();
+
+        return view('pet.index', compact('pet'));
     }
 
-    public function location()
+    public function location(Pet $pet)
     {
-        return view('pet.location');
+        $pet = $pet->select('id', 'name', 'latitude', 'longitude')->where('user_id', auth()->user()->id)->get();
+
+        return view('pet.location', compact('pet'));
     }
 
     public function create()
