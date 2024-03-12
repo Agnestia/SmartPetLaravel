@@ -37,7 +37,7 @@
           </div>
         </div>
       </a>
-      
+
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('landing.index') }}">
@@ -55,14 +55,14 @@
           <span>Lokasi Hewan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Atur Makanan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
           <i class="fas fa-fw fa-palette"></i>
@@ -76,7 +76,7 @@
           <span>Edit User</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link"href="{{ route('landing.edit_hewan') }}">
           <i class="fas fa-fw fa-palette"></i>
@@ -96,8 +96,8 @@
           <span>Register</span>
         </a>
       </li>
-     
-      
+
+
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
@@ -439,14 +439,14 @@
                         {lat: -6.2296, lng: 106.8523,  iconUrl: 'img/kucing.png', name: 'Lokasi 2'},
                         {lat: -7.2575, lng: 112.7521, iconUrl: 'img/kucing.png', name: 'Lokasi 3'},
                     ];
-        
+
                     function initMap() {
                         map = L.map('map').setView([initialLatitude, initialLongitude], 13);
-        
+
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         }).addTo(map);
-        
+
                         markers.forEach(function(marker, index) {
                             var customIcon = L.icon({
                                 iconUrl: marker.iconUrl,
@@ -454,25 +454,25 @@
                                 iconAnchor: [19, 38],
                                 popupAnchor: [0, -30]
                             });
-        
+
                             var newMarker = L.marker([marker.lat, marker.lng], {icon: customIcon}).addTo(map)
                                 .bindPopup(marker.name)
                                 .openPopup();
-        
+
                             newMarker.on('click', function() {
                                 goToLocation(index + 1);
                             });
                         });
                     }
-        
+
                     window.onload = function() {
                         initMap();
                     };
-        
+
                     function resetMap() {
                         map.setView([initialLatitude, initialLongitude], 13);
                     }
-        
+
                     function goToLocation(index) {
                         var marker = markers[index - 1];
                         map.setView([marker.lat, marker.lng], 13);
@@ -485,7 +485,7 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/ruang-admin.min.js"></script>
-    
+
 
 
   </body>

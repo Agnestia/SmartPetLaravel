@@ -1,6 +1,10 @@
 <?php
+
+use App\Http\Controllers\FeedScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +18,13 @@ use App\Http\Controllers\LandingController;
 */
 
 
-
-Route::get('register', [LandingController::class, 'register'])->name('landing.register');
-
-Route::get('login', [LandingController::class, 'login'])->name('landing.login');
-
-Route::get('edit_hewan', [LandingController::class, 'edit_hewan'])->name('landing.edit_hewan');
-
-Route::get('edit_user', [LandingController::class, 'edit_user'])->name('landing.edit_user');
-
-Route::get('jadwalMinum', [LandingController::class, 'jadwalMinum'])->name('landing.jadwalMinum');
-
-Route::get('jadwalMakan', [LandingController::class, 'jadwalMakan'])->name('landing.jadwalMakan');
-
-Route::get('lokasi_hewan', [LandingController::class, 'lokasi_hewan'])->name('landing.lokasi_hewan');
-
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
+Route::get('jadwalMinum', [FeedScheduleController::class, 'jadwalMinum'])->name('landing.jadwalMinum');
+Route::get('jadwalMakan', [FeedScheduleController::class, 'jadwalMakan'])->name('landing.jadwalMakan');
+
+Route::get('edit_hewan', [PetController::class, 'show'])->name('landing.edit_hewan');
+Route::get('lokasi_hewan', [PetController::class, 'location'])->name('landing.lokasi_hewan');
+
+Route::get('register', [UserController::class, 'registerPage'])->name('landing.register');
+Route::get('login', [UserController::class, 'loginPage'])->name('landing.login');
+Route::get('edit_user', [UserController::class, 'editPage'])->name('landing.edit_user');

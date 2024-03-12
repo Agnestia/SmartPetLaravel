@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address')->default('belum ada alamt');
+            $table->string('phone')->default('belum ada no hp');
+            $table->integer('remaining_food')->unsigned()->default(0);
+            $table->integer('remaining_drink')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
