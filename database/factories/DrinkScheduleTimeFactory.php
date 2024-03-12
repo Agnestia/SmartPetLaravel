@@ -17,7 +17,9 @@ class DrinkScheduleTimeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'drink_schedule_id' => fake()->numberBetween(1, 10),
+            'is_done' => fake()->boolean(),
+            'time' => fake()->time(),
         ];
     }
 }

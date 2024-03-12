@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DrinkScheduleTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,8 @@ class DrinkScheduleTimeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DrinkScheduleTime::factory()
+            ->count(20)
+            ->create();
     }
 }

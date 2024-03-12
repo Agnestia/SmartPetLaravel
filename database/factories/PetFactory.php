@@ -17,7 +17,12 @@ class PetFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 1,
+            'name' =>fake()->name(),
+            'species' => fake()->randomElement(['dog', 'cat', 'bird', 'fish']),
+            'photo' => fake()->imageUrl(640, 480, 'animals', true),
+            'latitude' => fake()->latitude(),
+            'longitude' => fake()->longitude(),
         ];
     }
 }

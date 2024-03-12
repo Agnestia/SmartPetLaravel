@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FeedSchedule;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,8 @@ class FeedScheduleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        FeedSchedule::factory()
+            ->count(10)
+            ->create();
     }
 }

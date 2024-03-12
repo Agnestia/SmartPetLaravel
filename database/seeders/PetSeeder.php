@@ -12,6 +12,6 @@ class PetSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
     }
 }

@@ -17,7 +17,10 @@ class DrinkScheduleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 1,
+            'amount' => $this->faker->numberBetween(100, 500),
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
         ];
     }
 }

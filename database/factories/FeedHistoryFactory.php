@@ -17,7 +17,10 @@ class FeedHistoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 1,
+            'amount' => $this->faker->numberBetween(100, 1000),
+            'is_success' => $this->faker->boolean(),
+            'date' => $this->faker->date(),
         ];
     }
 }

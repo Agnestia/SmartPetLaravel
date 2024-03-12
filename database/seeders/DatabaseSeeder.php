@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +20,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        UserFactory::times(1)->create();
+
+        $this->call([
+            DrinkScheduleSeeder::class,
+            DrinkScheduleTimeSeeder::class,
+            FeedHistorySeeder::class,
+            FeedScheduleSeeder::class,
+            FeedScheduleTimeSeeder::class,
+            PetSeeder::class,
+        ]);
     }
 }
