@@ -17,8 +17,9 @@ class FeedScheduleTimeFactory extends Factory
     public function definition(): array
     {
         return [
-            'feed_schedule_id' => fake()->numberBetween(1, 15),
+            'feed_schedule_id' => fake()->numberBetween(1, 20),
             'is_done' => fake()->boolean(),
+            'is_water' => fake()->boolean(),
             'time' => fake()->time(),
         ];
     }

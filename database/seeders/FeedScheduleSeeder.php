@@ -14,7 +14,7 @@ class FeedScheduleSeeder extends Seeder
     public function run(): void
     {
         FeedSchedule::factory()
-            ->count(10)
+            ->count(20)
             ->create();
     }
 }

@@ -14,7 +14,7 @@ class FeedHistorySeeder extends Seeder
     public function run(): void
     {
         FeedHistory::factory()
-            ->count(40)
+            ->count(50)
             ->create();
     }
 }

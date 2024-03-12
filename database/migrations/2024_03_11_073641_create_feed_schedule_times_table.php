@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('feed_schedule_id');
             $table->time('time');
+            $table->boolean('is_water')->default(false);
             $table->boolean('is_done')->default(false);
             $table->timestamps();
         });
