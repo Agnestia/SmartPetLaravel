@@ -46,7 +46,7 @@ class UserController extends Controller
 
     public function editPage()
     {
-        return view('user.editPage');
+        return view('user.edit');
     }
 
     public function edit()
