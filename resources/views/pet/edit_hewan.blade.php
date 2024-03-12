@@ -29,10 +29,10 @@
           </div>
         </div>
       </a>
-      
+
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('landing.index') }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -42,19 +42,19 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.lokasi_hewan') }}">
+        <a class="nav-link" href="{{ route('pet.location') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Lokasi Hewan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Atur Makanan</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
           <i class="fas fa-fw fa-palette"></i>
@@ -63,33 +63,33 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.edit_user') }}">
+        <a class="nav-link" href="{{ route('user.editPage') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit User</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
-        <a class="nav-link"href="{{ route('landing.edit_hewan') }}">
+        <a class="nav-link"href="{{ route('pet.editPage') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit hewan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.login') }}">
+        <a class="nav-link" href="{{ route('login') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.register') }}">
+        <a class="nav-link" href="{{ route('register') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Register</span>
         </a>
       </li>
-     
-      
+
+
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
@@ -440,7 +440,7 @@
                 </div>
                 <!---Main Content -->
             </div>
-            
+
         </div>
     </div>
 

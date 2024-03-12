@@ -8,12 +8,10 @@ class FeedScheduleController extends Controller
 {
     public function jadwalMakan()
     {
-        //
-        return view('landing.jadwalMakan');
+        return view('schedule.jadwalMakan');
     }
     public function jadwalMinum()
     {
-        //
-        return view('landing.jadwalMinum');
+        return view('schedule.jadwalMinum');
     }
 }

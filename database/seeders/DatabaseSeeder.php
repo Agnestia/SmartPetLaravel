@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::factory()->count(10)->create();
+        User::factory()->count(1)->create();
 
         $this->call([
             FeedHistorySeeder::class,

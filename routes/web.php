@@ -18,13 +18,18 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/', [LandingController::class, 'index'])->name('landing.index');
+Route::get('/', [LandingController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('jadwalMinum', [FeedScheduleController::class, 'jadwalMinum'])->name('landing.jadwalMinum');
 Route::get('jadwalMakan', [FeedScheduleController::class, 'jadwalMakan'])->name('landing.jadwalMakan');
 
-Route::get('edit_hewan', [PetController::class, 'show'])->name('landing.edit_hewan');
-Route::get('lokasi_hewan', [PetController::class, 'location'])->name('landing.lokasi_hewan');
+Route::get('edit_hewan', [PetController::class, 'show'])->name('pet.editPage');
+Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');
 
-Route::get('register', [UserController::class, 'registerPage'])->name('landing.register');
-Route::get('login', [UserController::class, 'loginPage'])->name('landing.login');
-Route::get('edit_user', [UserController::class, 'editPage'])->name('landing.edit_user');
+
+Route::get('register', [UserController::class, 'registerPage'])->name('register');
+
+Route::get('login', [UserController::class, 'loginPage'])->name('login');
+Route::post('login', [UserController::class, 'login'])->name('login');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('edit_user', [UserController::class, 'editPage'])->name('user.editPage');
