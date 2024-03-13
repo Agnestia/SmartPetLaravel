@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('jadwalMinum', [FeedScheduleController::class, 'jadwalMinum'])->name('landing.jadwalMinum');
     Route::get('jadwalMakan', [FeedScheduleController::class, 'jadwalMakan'])->name('landing.jadwalMakan');
 
-    Route::get('edit_hewan', [PetController::class, 'show'])->name('pet.editPage');
+    
     Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');
 
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
