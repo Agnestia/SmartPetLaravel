@@ -43,6 +43,7 @@ class PetController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'species' => 'required|min:4|max:255',
+            'photo' => 'required'
             
         ]);
         
@@ -70,7 +71,11 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
-        //
+        return view('pet.edit', [
+
+            'pet' => $pet,
+            
+        ]);
     }
 
     /**
@@ -78,7 +83,19 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|min:4|max:255',
+            'species' => 'required|min:4|max:255',
+            'photo' => 'required'
+            
+        ]);
+        
+        $validatedData['photo'] = $request->file('photo')->store('post-images');
+        $validatedData['user_id'] = auth()->user()->id; 
+
+        Pet::where('id', $pet->id)->update($validatedData);
+
+        return redirect('/pet')->with('success', 'Pet has been updated');
     }
 
     /**

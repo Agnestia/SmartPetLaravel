@@ -1,4 +1,112 @@
-<!DOCTYPE html>
+{{-- <div class="modal fade" id="edit_hewan_modal"
+      data-keyboard="false" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+              <div class="modal-body">
+                <form action="/pet/{{ $pet->id }}" method="POST" enctype="multipart/form-data">
+                    @method('put')
+                    @csrf
+
+                  <div class="container py-4 rounded ">
+                      <div class="container d-flex justify-content-center">
+                          <h1 class="h2">Edit Hewan</h1>
+                      </div>
+
+                      @error('photo')
+                      <div  class="alert alert-danger col-lg-8" role="alert">
+                         {{ $message }}
+                        </div>
+                        @enderror
+                      <!-- form modal -->
+                     
+                          <div class="row">
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <div
+                                          class="d-flex justify-content-center mb-3">
+                                          <img id="selectedAvatarModal"
+                                              src="{{ asset('storage/' . $pet->photo)}}"
+                                              class="rounded-circle"
+                                              style="width: 103px; height: 103px; object-fit: cover;"
+                                              alt="" />
+                                      </div>
+                                      <div class="d-flex justify-content-center">
+                                          <div
+                                              class="btn btn-primary btn-rounded">
+                                              <label class="form-label text-white"
+                                                  for="inputPhoto3">
+                                                  <svg xmlns="http://www.w3.org/2000/svg"
+                                                      width="20" height="20"
+                                                      fill="currentColor"
+                                                      class="bi bi-plus"
+                                                      viewBox="0 0 15 15">
+                                                      <path
+                                                          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                  </svg>
+                                              </label>
+                                              <input type="file"
+                                                  class="form-control d-none" name="photo"
+                                                  id="inputPhoto3"
+                                                  onchange="displaySelectedImage(event, 'selectedAvatarModal')" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="form-group row mt-4">
+                                      <label for="inputNamaHewan"
+                                          class="col-form-label col-md-2">Nama
+                                          Hewan</label>
+                                      <div class="col-lg-10">
+                                          <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                              id="inputNamaHewan"
+                                              placeholder="{{ $pet->name }}" value='{{ old('name', $pet->name) }}'>
+
+                                              @error('name')
+                                              <div  class="invalid-feedback">
+                                                 {{ $message }}
+                                                </div>
+                                                @enderror
+
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="inputJenisHewan"
+                                          class="col-form-label col-md-2">Jenis
+                                          Hewan</label>
+                                      <div class="col-lg-10">
+                                          <input type="text" class="form-control @error('species') is-invalid @enderror" name="species"
+                                              id="inputJenisHewan"
+                                              placeholder="{{ $pet->species }}" value='{{ old('name', $pet->species) }}'>
+
+                                              @error('species')
+                                              <div  class="invalid-feedback">
+                                                 {{ $message }}
+                                                </div>
+                                                @enderror
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row text-right">
+                              <div class="col-lg-12">
+                                  <button type="button" class="btn btn-secondary"
+                                      data-dismiss="modal">Close</button>
+                                  <button type="submit"
+                                      class="btn btn-primary" data-dismiss="modal">Submit</button>
+                              </div>
+                          </div>
+                      
+                  </div>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div> --}}
+  <!-- end modal -->
+
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -449,59 +557,7 @@
 
                     @endif
 
-                    <div class="table-responsive col-lg-12">
-                        <h3 class="h3 mt-4">List Hewan</h3>
-                        <table class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <th class="table-active">Nama</th>
-                                    <th class="table-active">Jenis</th>
-                                    <th class="table-active">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($pets as $pet)
-                                <tr>
-                                    <td class="table-light">{{ $pet->name }}</td>
-                                    <td class="table-light">{{ $pet->species }}</td>
-                                    <td class="table-light">
-                                        <!-- button modal -->
-                                        {{-- <button type="button" class="btn btn-success" data-toggle="modal"
-                                            data-target="#edit_hewan_modal">
-                                            edit
-                                        </button> --}}
-                                        <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a>
-
-                                            
-
-                                            {{-- @if(isset($focus_modal) && $focus_modal)
-     <script>
-        $(document).ready(function() {
-            $('#edit_hewan_modal').modal('show'); // Gantilah '#myModal' dengan ID modal Anda
-        });
-    </script>
-@endif --}}
-
-
-                                      
-                                        {{-- <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a> --}}
-                
-                                        <form action="/pet/{{ $pet->id }}" method="post" class="d-inline">
-                                          @method('delete')
-                                          @csrf
-                                          <button class="btn btn-danger border-0" onclick="return confirm('Are u Sure want delete this pet ?')">Delete</button>
-                                          
-                                        </form>
- 
-
-                                    </td>
-                                    
-                                </tr>
-                                
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    
                 </div>
                 <!---Main Content -->
             </div>
