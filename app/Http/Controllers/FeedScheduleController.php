@@ -13,8 +13,10 @@ class FeedScheduleController extends Controller
 
         return view('schedule.jadwalMakan', compact('feedScheduleTime'));
     }
-    public function drinkSchedulePage()
+    public function drinkSchedulePage(FeedScheduleTime $feedScheduleTime)
     {
-        return view('schedule.jadwalMinum');
+        $feedScheduleTime = $feedScheduleTime->with('feedSchedule')->where('is_water', true)->limit(6)->get();
+
+        return view('schedule.jadwalMinum', compact('feedScheduleTime'));
     }
 }

@@ -16,7 +16,7 @@ class PetController extends Controller
         return view('pet.index',[
 
             'pets' => Pet::where('user_id', auth()->user()->id)->get()
-    
+
            ]);
     }
 
@@ -43,12 +43,12 @@ class PetController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'species' => 'required|min:4|max:255',
-            
+
         ]);
-        
+
         $validatedData['photo'] = $request->file('photo')->store('post-images');
         $validatedData['user_id'] = auth()->user()->id; // untuk dimasukkan ke kolom user_id di tabel posts
-        
+
 
         Pet::create($validatedData);
 
