@@ -87,7 +87,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">
+        <a class="nav-link" href="{{ route('logout') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>

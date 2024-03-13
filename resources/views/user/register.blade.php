@@ -29,10 +29,11 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Register</h1>
                   </div>
-                  <form>
+                  <form action={{ route('register') }} method="POST">
+                    @csrf
                     <div class="form-group">
                       <label>Nama</label>
-                      <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter First Name">
+                      <input name="name" type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter First Name">
                     </div>
                     <div class="form-group">
                       <label>Nama Hewan</label>
@@ -40,7 +41,7 @@
                     </div>
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                      <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
                         placeholder="Enter Email Address">
                     </div>
                     <div class="form-group">
@@ -49,7 +50,7 @@
                     </div>
                     <div class="form-group">
                       <label>Repeat Password</label>
-                      <input type="password" class="form-control" id="exampleInputPasswordRepeat"
+                      <input name="password" type="password" class="form-control" id="exampleInputPasswordRepeat"
                         placeholder="Repeat Password">
                     </div>
                     <div class="form-group">
