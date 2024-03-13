@@ -13,8 +13,8 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
-    
-    
+
+
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
@@ -79,7 +79,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">
+        <a class="nav-link" href="{{ route('logout') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>
@@ -416,14 +416,14 @@
                     </div>
                     <hr class="mt-5">
 
-                     
+
                     @if (session()->has('success'))
 
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{  session('success')}}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
-                     
+
 
                     @endif
 
@@ -533,19 +533,19 @@
                                         </div>
                                         <!-- end modal -->
                                         <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a>
-                
+
                                         <form action="/pet/{{ $pet->id }}" method="post" class="d-inline">
                                           @method('delete')
                                           @csrf
                                           <button class="btn btn-danger border-0" onclick="return confirm('Are u Sure want delete this pet ?')">Delete</button>
-                                          
+
                                         </form>
- 
+
 
                                     </td>
-                                    
+
                                 </tr>
-                                
+
                                 @endforeach
                             </tbody>
                         </table>
