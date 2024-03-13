@@ -19,10 +19,10 @@ use App\Http\Controllers\UserController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('dashboard')->middleware('auth');
-    Route::get('jadwalMinum', [FeedScheduleController::class, 'jadwalMinum'])->name('landing.jadwalMinum');
-    Route::get('jadwalMakan', [FeedScheduleController::class, 'jadwalMakan'])->name('landing.jadwalMakan');
+    Route::get('jadwalMinum', [FeedScheduleController::class, 'drinkSchedulePage'])->name('landing.jadwalMinum');
+    Route::get('jadwalMakan', [FeedScheduleController::class, 'feedSchedulePage'])->name('landing.jadwalMakan');
 
-    
+
     Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');
 
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
