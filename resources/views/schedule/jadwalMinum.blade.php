@@ -350,24 +350,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($feedScheduleTime as $feed)
                                                 <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-success">checkist</span></td>
+                                                    <td class="table-light">{{ $feed->feedSchedule->start_date}}</td>
+                                                    <td class="table-light">{{ $feed->time }}</td>
+                                                    <td class="table-light">{{ $feed->feedSchedule->amount }}ml</td>
+                                                    <td><span class={{ $feed->status ? "badge badge-success" : "badge badge-info" }}>{{ $feed->status ? "Success" : "pending" }}</span></td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-info">Processing</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                         </div>
