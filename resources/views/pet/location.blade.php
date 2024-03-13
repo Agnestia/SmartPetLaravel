@@ -80,7 +80,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"href="{{ route('pet.editPage') }}">
+        <a class="nav-link"href="/pet">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit hewan</span>
         </a>
