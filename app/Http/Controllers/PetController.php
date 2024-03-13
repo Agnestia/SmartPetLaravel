@@ -4,35 +4,93 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PetController extends Controller
 {
-    public function show(Pet $pet)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $pet = $pet->where('user_id', auth()->user()->id)->get();
+        return view('pet.index',[
 
-        return view('pet.index', compact('pet'));
+            'pets' => Pet::where('user_id', auth()->user()->id)->get()
+    
+           ]);
     }
 
     public function location(Pet $pet)
     {
-        $pet = $pet->select('id', 'name', 'latitude', 'longitude')->where('user_id', auth()->user()->id)->get();
+        $pets = $pet->select('id', 'name', 'latitude', 'longitude')->where('user_id', auth()->user()->id)->get();
 
-        return view('pet.location', compact('pet'));
+        return view('pet.location', compact('pets'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('pet.create');
+        return view('pet.index');
     }
 
-    public function edit()
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return view('pet.edit');
+        $validatedData = $request->validate([
+            'name' => 'required|min:4|max:255',
+            'species' => 'required|min:4|max:255',
+            
+        ]);
+        
+        $validatedData['photo'] = $request->file('photo')->store('post-images');
+        $validatedData['user_id'] = auth()->user()->id; // untuk dimasukkan ke kolom user_id di tabel posts
+        
+
+        Pet::create($validatedData);
+
+        return redirect('/pet')->with('success', 'New Pet Has Been Added');
     }
 
-    public function destroy()
+    /**
+     * Display the specified resource.
+     */
+    public function show(Pet $pet)
     {
-        return view('pet.destroy');
+        $pets = $pet->where('user_id', auth()->user()->id)->get();
+
+        return view('pet.index', compact('pets'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Pet $pet)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Pet $pet)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Pet $pet)
+    {
+        if($pet->photo){
+            Storage::delete($pet->photo);
+        }
+        Pet::destroy($pet->id);
+
+        return redirect('/pet')->with('success', ' Pet Has Been Delete');
     }
 }

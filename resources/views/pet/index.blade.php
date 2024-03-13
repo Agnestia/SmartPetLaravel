@@ -13,6 +13,8 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
+    
+    
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
@@ -70,7 +72,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"href="{{ route('pet.editPage') }}">
+        <a class="nav-link"href="/pet">
           <i class="fas fa-fw fa-palette"></i>
           <span>Edit hewan</span>
         </a>
@@ -299,7 +301,8 @@
                                 <div class="container d-flex justify-content-center">
                                     <h1 class="h2 mt-3 mb-3">Tambah Hewan</h1>
                                 </div>
-                                <form action="">
+                                <form action="/pet" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -319,7 +322,7 @@
                                                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                                                             </svg>
                                                         </label>
-                                                        <input type="file" class="form-control d-none" id="inputPhoto"
+                                                        <input type="file" name="photo" class="form-control d-none" id="inputPhoto"
                                                             onchange="displaySelectedImage(event, 'selectedAvatar')" />
                                                     </div>
                                                 </div>
@@ -330,15 +333,15 @@
                                                 <label for="inputNamaHewan" class="col-form-label col-md-2">Nama
                                                     Hewan</label>
                                                 <div class="col-lg-10">
-                                                    <input type="text" class="form-control" id="inputNamaHewan"
-                                                        placeholder="Rocky">
+                                                    <input type="text" name="name" class="form-control" id="inputNamaHewan"
+                                                        placeholder="Rocky" >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="inputJenisHewan" class="col-form-label col-md-2">Jenis
                                                     Hewan</label>
                                                 <div class="col-lg-10">
-                                                    <input type="text" class="form-control" id="inputJenisHewan"
+                                                    <input type="text" name="species" class="form-control" id="inputJenisHewan"
                                                         placeholder="Kucing">
                                                 </div>
                                             </div>
@@ -387,7 +390,7 @@
                                             <div class="form-group row mt-4">
                                                 <label for="inputNamaHewan" class="col-form-label col-md-2">Nama
                                                     Hewan</label>
-                                                <div class="col-lg-10">
+                                                <div class="col-lg-9">
                                                     <input type="text" class="form-control" id="inputNamaHewan"
                                                         placeholder="Milo">
                                                 </div>
@@ -412,28 +415,49 @@
                         </div>
                     </div>
                     <hr class="mt-5">
-                    <div class="container">
+
+                     
+                    @if (session()->has('success'))
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{  session('success')}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                     
+
+                    @endif
+
+                    <div class="table-responsive col-lg-12">
                         <h3 class="h3 mt-4">List Hewan</h3>
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th class="table-active">Nama</th>
                                     <th class="table-active">Jenis</th>
+                                    <th class="table-active">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($pets as $pet)
                                 <tr>
-                                    <td class="table-light">Rocky</td>
-                                    <td class="table-light">Kucing</td>
+                                    <td class="table-light">{{ $pet->name }}</td>
+                                    <td class="table-light">{{ $pet->species }}</td>
+                                    <td class="table-light">
+                                        <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a>
+                
+                                        <form action="/pet/{{ $pet->id }}" method="post" class="d-inline">
+                                          @method('delete')
+                                          @csrf
+                                          <button class="btn btn-danger border-0" onclick="return confirm('Are u Sure want delete this pet ?')">Delete</button>
+                                          
+                                        </form>
+ 
+
+                                    </td>
+                                    
                                 </tr>
-                                <tr>
-                                    <td class="table-light">Milo</td>
-                                    <td class="table-light">Kucing</td>
-                                </tr>
-                                <tr>
-                                    <td class="table-light">-</td>
-                                    <td class="table-light">-</td>
-                                </tr>
+                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -451,6 +475,8 @@
 
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
     <!-- Page level custom scripts -->
@@ -473,6 +499,9 @@
             }
         }
     </script>
+
+     {{-- js icon --}}
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
 </body>
 </body>
 

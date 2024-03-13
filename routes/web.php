@@ -35,3 +35,5 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login', [UserController::class, 'loginPage'])->name('login');
     Route::post('login', [UserController::class, 'login'])->name('login');
 });
+
+Route::resource('/pet', PetController::class)->middleware('auth');
