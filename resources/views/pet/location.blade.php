@@ -423,9 +423,10 @@
                 <div>
                     <h3>list hewan</h3>
                     <ul style="list-style-type: none;">
-                        <li><a href="#" onclick="goToLocation(1)">Lokasi 1</a></li>
-                        <li><a href="#" onclick="goToLocation(2)">Lokasi 2</a></li>
-                        <li><a href="#" onclick="goToLocation(3)">Lokasi 3</a></li>
+                        @foreach ($pets as $index=>$pet)
+                            <li><a href="#" onclick="goToLocation({{ $index+1 }})">{{ $index+1 }}. {{ $pet->name }}</a></li>
+
+                        @endforeach
                     </ul>
                 </div>
                 <div class="map"></div>
