@@ -19,8 +19,8 @@ class FeedScheduleFactory extends Factory
         return [
             'user_id' => 1,
             'amount' => $this->faker->numberBetween(100, 1000),
-            'start_date' => $this->faker->date(),
-            'end_date' => $this->faker->date(),
+            'start_date' => $this->faker->dateTime(),
+            'end_date' => $this->faker->dateTime(),
         ];
     }
 }

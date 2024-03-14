@@ -13,8 +13,8 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
-    
-    
+
+
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
@@ -79,7 +79,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">
+        <a class="nav-link" href="{{ route('logout') }}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Logout</span>
         </a>
@@ -438,14 +438,14 @@
                     </div>
                     <hr class="mt-5">
 
-                     
+
                     @if (session()->has('success'))
 
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{  session('success')}}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
-                     
+
 
                     @endif
 
@@ -472,6 +472,7 @@
                                         </button>
                                         {{-- <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a> --}}
 
+<<<<<<< HEAD
         {{-- start model  --}}
     
 {{-- end modal --}}
@@ -492,18 +493,105 @@
                                       
                                         {{-- <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a> --}}
                 
+=======
+                                        <!-- start modal -->
+                                        <div class="modal fade" id="edit_hewan_modal"
+                                            data-keyboard="false" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="container py-4 rounded ">
+                                                            <div class="container d-flex justify-content-center">
+                                                                <h1 class="h2">Edit Hewan</h1>
+                                                            </div>
+                                                            <!-- form modal -->
+                                                            <form action="">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <div
+                                                                                class="d-flex justify-content-center mb-3">
+                                                                                <img id="selectedAvatar"
+                                                                                    src="./img/ramadhanfoto.png"
+                                                                                    class="rounded-circle"
+                                                                                    style="width: 103px; height: 103px; object-fit: cover;"
+                                                                                    alt="" />
+                                                                            </div>
+                                                                            <div class="d-flex justify-content-center">
+                                                                                <div
+                                                                                    class="btn btn-primary btn-rounded">
+                                                                                    <label class="form-label text-white"
+                                                                                        for="inputPhoto">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                            width="20" height="20"
+                                                                                            fill="currentColor"
+                                                                                            class="bi bi-plus"
+                                                                                            viewBox="0 0 15 15">
+                                                                                            <path
+                                                                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                                                        </svg>
+                                                                                    </label>
+                                                                                    <input type="file"
+                                                                                        class="form-control d-none"
+                                                                                        id="inputPhoto"
+                                                                                        onchange="displaySelectedImage(event, 'selectedAvatar')" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <div class="form-group row mt-4">
+                                                                            <label for="inputNamaHewan"
+                                                                                class="col-form-label col-md-2">Nama
+                                                                                Hewan</label>
+                                                                            <div class="col-lg-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="inputNamaHewan"
+                                                                                    placeholder="{{ $pet->name }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="inputJenisHewan"
+                                                                                class="col-form-label col-md-2">Jenis
+                                                                                Hewan</label>
+                                                                            <div class="col-lg-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="inputJenisHewan"
+                                                                                    placeholder="{{ $pet->species }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row text-right">
+                                                                    <div class="col-lg-12">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Close</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary" data-dismiss="modal">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end modal -->
+                                        <a href="/pet/{{ $pet->id }}/edit" class="btn btn-success text-decoration-none text-white">Edit</a>
+
+>>>>>>> 824dc327e98d5cb4bb1f509122ed182ce426ae2a
                                         <form action="/pet/{{ $pet->id }}" method="post" class="d-inline">
                                           @method('delete')
                                           @csrf
                                           <button class="btn btn-danger border-0" onclick="return confirm('Are u Sure want delete this pet ?')">Delete</button>
-                                          
+
                                         </form>
- 
+
 
                                     </td>
-                                    
+
                                 </tr>
-                                
+
                                 @endforeach
                             </tbody>
                         </table>
