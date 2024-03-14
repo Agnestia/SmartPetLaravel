@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');
+    Route::get('coba', [PetController::class, 'coba']);
 
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
@@ -38,3 +39,4 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::resource('/pet', PetController::class)->middleware('auth');
+

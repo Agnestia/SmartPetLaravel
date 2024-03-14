@@ -5,8 +5,8 @@ data-keyboard="false" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
         <div class="modal-body">
-          <form action="/pet/{{$pet->id}}" method="POST" enctype="multipart/form-data">
-              @method('put')
+          <form action="/coba" method="POST" enctype="multipart/form-data">
+              {{-- @method('PUT') --}}
               @csrf
 
             <div class="container py-4 rounded ">
