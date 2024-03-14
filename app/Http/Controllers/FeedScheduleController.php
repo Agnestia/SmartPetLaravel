@@ -29,14 +29,14 @@ class FeedScheduleController extends Controller
 
         $feedScheduleTime->create([
             'time' => $request->time,
-            'is_water' => false,
+            'is_water' => $request->is_water,
             'feed_schedule_id' => $feedScheduleId
         ]);
 
         if(isset($request->time2)){
             $feedScheduleTime->create([
                 'time' => $request->time2,
-                'is_water' => false,
+                'is_water' => $request->is_water,
                 'feed_schedule_id' => $feedScheduleId
             ]);
         }
@@ -44,7 +44,7 @@ class FeedScheduleController extends Controller
         if(isset($request->time3)){
             $feedScheduleTime->create([
                 'time' => $request->time3,
-                'is_water' => false,
+                'is_water' => $request->is_water,
                 'feed_schedule_id' => $feedScheduleId
             ]);
         }

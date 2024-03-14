@@ -314,6 +314,7 @@
                                 </div>
                                 <form action={{ route('landing.jadwalMakan') }} method="POST">
                                     @csrf
+                                    <input type="hidden" name="is_water" value={{ false }}>
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="form-group row mt-4 md-2">
