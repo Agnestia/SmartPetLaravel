@@ -437,9 +437,10 @@
                     var initialLongitude = 106.8456;
                     var map;
                     var markers = [
-                        {lat: -6.2088, lng: 106.8456,  iconUrl: 'img/kucing.png', name: 'Lokasi 1'},
-                        {lat: -6.2296, lng: 106.8523,  iconUrl: 'img/kucing.png', name: 'Lokasi 2'},
-                        {lat: -7.2575, lng: 112.7521, iconUrl: 'img/kucing.png', name: 'Lokasi 3'},
+                        @foreach ($pets as $pet)
+                            {lat: '{{ $pet->latitude }}', lng: '{{ $pet->longitude }}',  iconUrl: 'img/kucing.png', name: '{{ $pet->name }}'},
+                        @endforeach
+
                     ];
 
                     function initMap() {
