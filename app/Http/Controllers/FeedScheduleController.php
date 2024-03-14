@@ -18,13 +18,6 @@ class FeedScheduleController extends Controller
 
     public function store(Request $request, FeedScheduleTime $feedScheduleTime, FeedSchedule $feedSchedule, Auth $auth)
     {
-        // return $request;
-
-        // $request->validate([
-        //     'time' => 'required',
-        //     'is_water' => 'required',
-        // ]);
-
         $feedSchedule->create([
             'user_id' => auth()->user()->id,
             'amount' => $request->amount,
@@ -42,33 +35,19 @@ class FeedScheduleController extends Controller
 
         if(isset($request->time2)){
             $feedScheduleTime->create([
-                'time' => $request->time1,
+                'time' => $request->time2,
                 'is_water' => false,
-                'feedSchedule_id' => $feedScheduleId
+                'feed_schedule_id' => $feedScheduleId
             ]);
         }
 
         if(isset($request->time3)){
             $feedScheduleTime->create([
-                'time' => $request->time1,
+                'time' => $request->time3,
                 'is_water' => false,
-                'feedSchedule_id' => $feedScheduleId
+                'feed_schedule_id' => $feedScheduleId
             ]);
         }
-
-        // for($i = 0; $i <= 2; $i++) {
-        //     $feedScheduleTime->create([
-        //         'time' => $request->time[$i],
-        //         'is_water' => $request->is_water[$i],
-        //         'user_id' => $auth->user()->id
-        //     ]);
-        // }
-
-        // FeedScheduleTime::create([
-        //     'time' => $request->time,
-        //     'is_water' => $request->is_water,
-        //     'user_id' => auth()->user()->id
-        // ]);
 
         return redirect()->back();
     }
