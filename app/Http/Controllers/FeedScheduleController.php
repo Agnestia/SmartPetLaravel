@@ -18,6 +18,8 @@ class FeedScheduleController extends Controller
 
     public function store(Request $request, FeedScheduleTime $feedScheduleTime, FeedSchedule $feedSchedule, Auth $auth)
     {
+        $is_water = is_null($request->is_water) ? false : true;
+
         $feedSchedule->create([
             'user_id' => auth()->user()->id,
             'amount' => $request->amount,
@@ -29,14 +31,14 @@ class FeedScheduleController extends Controller
 
         $feedScheduleTime->create([
             'time' => $request->time,
-            'is_water' => $request->is_water,
+            'is_water' => $is_water,
             'feed_schedule_id' => $feedScheduleId
         ]);
 
         if(isset($request->time2)){
             $feedScheduleTime->create([
                 'time' => $request->time2,
-                'is_water' => $request->is_water,
+                'is_water' => $is_water,
                 'feed_schedule_id' => $feedScheduleId
             ]);
         }
@@ -44,7 +46,7 @@ class FeedScheduleController extends Controller
         if(isset($request->time3)){
             $feedScheduleTime->create([
                 'time' => $request->time3,
-                'is_water' => $request->is_water,
+                'is_water' => $is_water,
                 'feed_schedule_id' => $feedScheduleId
             ]);
         }
