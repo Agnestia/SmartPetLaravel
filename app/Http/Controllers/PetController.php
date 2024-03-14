@@ -71,9 +71,9 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
-        return view('pet.edit', [
+        return view('pet.index', [
 
-            'pet' => $pet,
+            // 'pet' => $pet,
             
         ]);
     }
@@ -83,20 +83,26 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
+       
+        
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'species' => 'required|min:4|max:255',
-            'photo' => 'required'
-            
+            'photo' => 'required' // Anda bisa menambahkan aturan validasi untuk file gambar di sini
         ]);
-        
-        $validatedData['photo'] = $request->file('photo')->store('post-images');
-        $validatedData['user_id'] = auth()->user()->id; 
-
-        Pet::where('id', $pet->id)->update($validatedData);
-
+    
+        // Pastikan file yang diunggah adalah gambar sebelum menyimpannya
+      
+    
+        $validatedData['user_id'] = auth()->user()->id;
+    
+        // Update data hewan dengan data yang divalidasi
+        Pet::find($pet)->update($validatedData);
+    
         return redirect('/pet')->with('success', 'Pet has been updated');
     }
+    
+    
 
     /**
      * Remove the specified resource from storage.
