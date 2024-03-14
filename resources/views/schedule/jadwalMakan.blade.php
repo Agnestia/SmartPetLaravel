@@ -312,19 +312,19 @@
                                 <div class="container d-flex justify-content-center-start ">
                                     <h4 class="mt-3"style="color: black;">Jadwal Makanan Otomatis</h4>
                                 </div>
-                                <form action="">
+                                <form action={{ route('landing.jadwalMakan') }} method="POST">
+                                    @csrf
                                     <div class="row">
-
                                         <div class="col-md-9">
                                             <div class="form-group row mt-4 md-2">
                                                 <label for="inputNamaHewan"
                                                     class="col-form-label col-md-3 ">Tanggal</label>
                                                 <div class="col-lg-9 pl-5">
                                                     <input type="date" class="form-control form-control-sm "
-                                                        id="inputNamaHewan" placeholder="Rocky"
+                                                        id="inputNamaHewan" placeholder="Rocky" name="start_date"
                                                         style="width: 150px;">
                                                     <input type="date" class="form-control form-control-sm mt-2"
-                                                        id="inputNamaHewan" placeholder="Rocky"
+                                                        id="inputNamaHewan" placeholder="Rocky" name="end_date"
                                                         style="width: 150px;">
                                                 </div>
                                             </div>
@@ -333,7 +333,7 @@
                                                     class="col-form-label col-md-3">Berat</label>
                                                 <div class="col-lg-9 pl-5">
                                                     <input type="number" class="form-control form-control-sm"
-                                                        id="inputJenisHewan" placeholder="Per Gram"
+                                                        id="inputJenisHewan" placeholder="Per Gram" name="amount"
                                                         style="width: 150px">
                                                 </div>
                                             </div>
@@ -343,7 +343,7 @@
                                                 <div class="col-lg-9 pl-5">
                                                     <div id="inputJamContainer">
                                                         <input type="time" class="form-control form-control-sm"
-                                                            id="inputJenisHewan" placeholder="Kucing"
+                                                            id="inputJenisHewan" placeholder="Kucing" name="time"
                                                             style="width: 150px;">
                                                         <button type="button"
                                                             class="btn btn-sm btn-secondary ml-2 mt-2"
@@ -402,6 +402,7 @@
                                         newInputJam.classList.add("form-control", "form-control-sm", "mt-2");
                                         newInputJam.style.width = "150px";
                                         newInputJam.id = "inputJam" + inputCounter;
+                                        newInputJam.name = "time" + inputCounter;
 
                                         inputJamContainer.insertBefore(newInputJam, addInputJamButton);
 

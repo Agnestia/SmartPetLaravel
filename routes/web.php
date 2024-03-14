@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('dashboard')->middleware('auth');
     Route::get('jadwalMinum', [FeedScheduleController::class, 'drinkSchedulePage'])->name('landing.jadwalMinum');
     Route::get('jadwalMakan', [FeedScheduleController::class, 'feedSchedulePage'])->name('landing.jadwalMakan');
+    Route::post('jadwalMakan', [FeedScheduleController::class, 'store'])->name('landing.jadwalMakan');
 
 
     Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');

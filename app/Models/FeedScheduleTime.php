@@ -10,6 +10,8 @@ class FeedScheduleTime extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     /**
      * Get the feedSchedule that owns the FeedScheduleTime
      *
