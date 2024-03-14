@@ -301,65 +301,77 @@
                                 <div class="container d-flex justify-content-center-start ">
                                     <h4 class="mt-3"style="color: black;">Jadwal Minum Otomatis</h4>
                                 </div>
-                                <form action="">
+                                <form action={{ route('landing.jadwalMakan') }} method="POST">
+                                    @csrf
+                                    <input type="hidden" name="is_water" value={{ true }}>
                                     <div class="row">
-
                                         <div class="col-md-9">
                                             <div class="form-group row mt-4 md-2">
-                                                <label for="inputNamaHewan" class="col-form-label col-md-3 ">Tanggal</label>
+                                                <label for="inputNamaHewan"
+                                                    class="col-form-label col-md-3 ">Tanggal</label>
                                                 <div class="col-lg-9 pl-5">
-                                                    <input type="date" class="form-control form-control-sm " id="inputNamaHewan"
-                                                        placeholder="Rocky" style="width: 150px;">
-                                                        <input type="date" class="form-control form-control-sm mt-2" id="inputNamaHewan"
-                                                        placeholder="Rocky" style="width: 150px;">
+                                                    <input type="date" class="form-control form-control-sm "
+                                                        id="inputNamaHewan" placeholder="Rocky" name="start_date"
+                                                        style="width: 150px;">
+                                                    <input type="date" class="form-control form-control-sm mt-2"
+                                                        id="inputNamaHewan" placeholder="Rocky" name="end_date"
+                                                        style="width: 150px;">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Berat</label>
+                                                <label for="inputJenisHewan"
+                                                    class="col-form-label col-md-3">Berat</label>
                                                 <div class="col-lg-9 pl-5">
-                                                    <input type="number" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Per Gram" style="width: 150px">
+                                                    <input type="number" class="form-control form-control-sm"
+                                                        id="inputJenisHewan" placeholder="Per Gram" name="amount"
+                                                        style="width: 150px">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Jam</label>
+                                                <label for="inputJenisHewan"
+                                                    class="col-form-label col-md-3">Jam</label>
                                                 <div class="col-lg-9 pl-5">
-                                                <div id="inputJamContainer">
-                                                    <input type="time" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Kucing" style="width: 150px;">
-                                                        <button type="button" class="btn btn-sm btn-secondary ml-2 mt-2" id="addInputJam">+</button>
-                                                </div>
+                                                    <div id="inputJamContainer">
+                                                        <input type="time" class="form-control form-control-sm"
+                                                            id="inputJenisHewan" placeholder="Kucing" name="time"
+                                                            style="width: 150px;">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-secondary ml-2 mt-2"
+                                                            id="addInputJam">+</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row text-right">
                                         <div class="col-lg-1">
-                                            <button type="submit" class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
                                         </div>
                                     </div>
                                     <div class="container">
                                         <div class="table-responsive">
-                                        <table class="table table-bordered text-center"style=" font-size: 14px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="table-active">Tanggal</th>
-                                                    <th class="table-active">Jam</th>
-                                                    <th class="table-active">Berat</th>
-                                                    <th class="table-active">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($feedScheduleTime as $feed)
-                                                <tr>
-                                                    <td class="table-light">{{ $feed->feedSchedule->start_date}}</td>
-                                                    <td class="table-light">{{ $feed->time }}</td>
-                                                    <td class="table-light">{{ $feed->feedSchedule->amount }}ml</td>
-                                                    <td><span class={{ $feed->status ? "badge badge-success" : "badge badge-info" }}>{{ $feed->status ? "Success" : "pending" }}</span></td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                            <table class="table table-bordered text-center"style=" font-size: 14px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="table-active">Tanggal</th>
+                                                        <th class="table-active">Jam</th>
+                                                        <th class="table-active">Berat</th>
+                                                        <th class="table-active">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($feedScheduleTime as $feed)
+                                                        <tr>
+                                                            <td class="table-light">{{ $feed->feedSchedule->start_date}}</td>
+                                                            <td class="table-light">{{ $feed->time }}</td>
+                                                            <td class="table-light">{{ $feed->feedSchedule->amount }}gr</td>
+                                                            <td><span class={{ $feed->status ? "badge badge-success" : "badge badge-info" }}>{{ $feed->status ? "Success" : "pending" }}</span></td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </form>

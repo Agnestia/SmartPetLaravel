@@ -13,11 +13,11 @@ class PetController extends Controller
      */
     public function index()
     {
-        return view('pet.index',[
+        return view('pet.index', [
 
             'pets' => Pet::where('user_id', auth()->user()->id)->get()
-    
-           ]);
+
+        ]);
     }
 
     public function location(Pet $pet)
@@ -44,12 +44,12 @@ class PetController extends Controller
             'name' => 'required|min:4|max:255',
             'species' => 'required|min:4|max:255',
             'photo' => 'required'
-            
+
         ]);
-        
+
         $validatedData['photo'] = $request->file('photo')->store('post-images');
         $validatedData['user_id'] = auth()->user()->id; // untuk dimasukkan ke kolom user_id di tabel posts
-        
+
 
         Pet::create($validatedData);
 
@@ -74,7 +74,7 @@ class PetController extends Controller
         return view('pet.index', [
 
             // 'pet' => $pet,
-            
+
         ]);
     }
 
@@ -88,33 +88,33 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-      
-        
+
+
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'species' => 'required|min:4|max:255',
             'photo' => 'required' // Anda bisa menambahkan aturan validasi untuk file gambar di sini
         ]);
-    
+
         // Pastikan file yang diunggah adalah gambar sebelum menyimpannya
-      
-    
+
+
         $validatedData['user_id'] = auth()->user()->id;
-    
+
         // Update data hewan dengan data yang divalidasi
         Pet::find($pet)->update($validatedData);
-    
+
         return redirect('/pet')->with('success', 'Pet has been updated');
     }
-    
-    
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Pet $pet)
     {
-        if($pet->photo){
+        if ($pet->photo) {
             Storage::delete($pet->photo);
         }
         Pet::destroy($pet->id);

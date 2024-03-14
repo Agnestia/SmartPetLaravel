@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('lokasi_hewan', [PetController::class, 'location'])->name('pet.location');
-    Route::get('coba', [PetController::class, 'coba']);
+    Route::post('coba', [PetController::class, 'coba'])->name('pet.coba');
 
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
