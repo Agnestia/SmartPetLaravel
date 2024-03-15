@@ -67,9 +67,18 @@ class UserController extends Controller
         return view('user.edit', compact('user'));
     }
 
-    public function edit()
+    public function edit(Request $request, User $user)
     {
-        return view('user.edit');
+        // $user = User::where('id', auth()->user()->id)->first();
+
+        $user->where('id', auth()->user()->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => "alamat",
+            'phone' => $request->phone,
+        ]);
+
+        return redirect()->back();
     }
 
     public function logout(Request $request)

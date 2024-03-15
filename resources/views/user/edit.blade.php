@@ -317,31 +317,33 @@
                         </div>
                         <!-- form edit -->
                         <div class="container col-lg-9 bg-white px-5 pt-4 rounded shadow">
-                            <form class="pt-1">
+                            <form action={{ route('user.edit') }} method="POST" class="pt-1">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group row">
                                     <label for="inputNama" class="col-form-label col-md-1">Nama</label>
                                     <div class="col-lg-11">
-                                        <input type="text" class="form-control" id="inputNama" placeholder="Ramadhan">
+                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control" id="inputNama" placeholder="Ramadhan">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputAlamat" class="col-form-label col-md-1">Alamat</label>
                                     <div class="col-lg-11">
-                                        <input type="text" class="form-control" id="inputAlamat"
+                                        <input value="{{ old('address', Auth::user()->address )}}" name="address" type="text" class="form-control" id="inputAlamat"
                                             placeholder="Jl. semarang 44">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputTelepon" class="col-form-label col-md-1">No.Tlp</label>
                                     <div class="col-lg-11">
-                                        <input type="text" class="form-control" id="inputTelepon"
+                                        <input name="phone" value="{{ old('phone', Auth::user()->phone ) }}" type="text" class="form-control" id="inputTelepon"
                                             placeholder="086951442">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputEmail" class="col-form-label col-md-1">Email</label>
                                     <div class="col-lg-11">
-                                        <input type="email" class="form-control" id="inputEmail"
+                                        <input value={{ old('email', Auth::user()->email) }} name="email" type="email" class="form-control" id="inputEmail"
                                             placeholder="ramadhan@gmail.com">
                                     </div>
                                 </div>

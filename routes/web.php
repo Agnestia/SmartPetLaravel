@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
     Route::get('edit_user', [UserController::class, 'editPage'])->name('user.editPage');
+    Route::put('edit_user', [UserController::class, 'edit'])->name('user.edit');
 });
 
 Route::middleware(['guest'])->group(function () {
