@@ -85,11 +85,11 @@ class UserController extends Controller
         if ($request->hasFile('photo')) {
             // Jika ada file yang diunggah, lakukan validasi untuk file
             $request->validate([
-                'photo' => 'unique:pets|image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
+                'photo' => 'image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
             ]);
     
             // Simpan file yang diunggah
-            $validatedData['photo'] = $request->file('photo')->store('post-images');
+            $validatedDataUser['photo'] = $request->file('photo')->store('post-images');
 
             if($request->oldImageUser){
                 Storage::delete($request->oldImageUser);
@@ -97,7 +97,7 @@ class UserController extends Controller
             
         } else {
             // Jika tidak ada file yang diunggah, gunakan nilai default dari kolom foto
-            $validatedData['photo'] = $request->input('oldImage');
+            $validatedDataUser['photo'] = $request->input('oldImageUser');
         }
 
         User::where('id', auth()->user()->id)->update($validatedDataUser);
