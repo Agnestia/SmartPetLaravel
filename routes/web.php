@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('edit_user', [UserController::class, 'editPage'])->name('user.editPage');
     Route::put('edit_user', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('edit_pass', [UserController::class, 'editPass'])->name('user.edit.pass');
 });
 
 Route::middleware(['guest'])->group(function () {

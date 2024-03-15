@@ -81,6 +81,18 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function editPass(Request $request ,User $user)
+    {
+        if(Hash::check($request->old_password, $user->password))
+        {
+            $user->where('id', auth()->user()->id)->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

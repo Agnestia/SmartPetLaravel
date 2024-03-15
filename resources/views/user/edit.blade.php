@@ -357,22 +357,24 @@
                     </div>
                     <div class="container mt-5">
                         <div class="container bg-white px-5 pt-4 pb-2 rounded shadow">
-                            <form class="pt-2">
+                            <form action={{ route('user.edit.pass') }} method="POST" class="pt-2">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input type="password" class="form-control" id="passwordLama"
+                                        <input name="old_password" type="password" class="form-control" id="passwordLama"
                                             placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input type="password" class="form-control" id="passwordBaru"
+                                        <input name="password" type="password" class="form-control" id="passwordBaru"
                                             placeholder="Password Baru">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input type="password" class="form-control" id="konfirmasiPassword"
+                                        <input name="password_confirmation" type="password" class="form-control" id="konfirmasiPassword"
                                             placeholder="Konfirmasi Password">
                                     </div>
                                 </div>
