@@ -74,7 +74,7 @@ class UserController extends Controller
         $user->where('id', auth()->user()->id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'address' => "alamat",
+            'address' => $request->address,
             'phone' => $request->phone,
         ]);
 
