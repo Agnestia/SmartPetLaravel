@@ -361,6 +361,18 @@
                                         </div>
                                     </div>
                                     <div class="container">
+
+                                        @if (session()->has('success'))
+
+                                        <script>
+                                                   
+                                            // Panggil SweetAlert setelah dokumen selesai dimuat
+                                            swal("Success!", "{{ session('success') }}", "success");
+                                       
+                                       </script>
+                    
+                    
+                                        @endif
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center"style=" font-size: 14px;">
                                                 <thead>

@@ -15,7 +15,7 @@
     <link href="css/ruang-admin.min.css" rel="stylesheet">
     
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
@@ -301,10 +301,15 @@
                             <div class="container bg-white py-4 rounded shadow">
 
                                 @error('photo')
-                                <div  class="alert alert-danger col-lg-8" role="alert">
-                                   {{ $message }}
-                                  </div>
+                                <script>
+                                                       
+                                    // Panggil SweetAlert setelah dokumen selesai dimuat
+                                    swal("Gagal!", "{{ $message }}", "error");
+                               
+                               </script>
                                   @enderror
+
+                                 
 
                                 <div class="container d-flex justify-content-center">
                                     <h1 class="h2 mt-3 mb-3">Tambah Hewan</h1>
@@ -442,10 +447,12 @@
 
                     @if (session()->has('success'))
 
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{  session('success')}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
+                    <script>
+                               
+                        // Panggil SweetAlert setelah dokumen selesai dimuat
+                        swal("Success!", "{{ session('success') }}", "success");
+                   
+                   </script>
 
 
                     @endif
@@ -478,10 +485,10 @@
                                         <!-- end modal -->
                                         
 
-                                        <form action="/pet/{{ $pet->id }}" method="post" class="d-inline">
+                                        <form id="deleteForm" action="/pet/{{ $pet->id }}" method="post" class="d-inline">
                                           @method('delete')
                                           @csrf
-                                          <button class="btn btn-danger border-0" onclick="return confirm('Are u Sure want delete this pet ?')">Delete</button>
+                                          <button class="btn btn-danger border-0" type="button" onclick="alertt()">Delete</button>
 
                                         </form>
 
@@ -664,7 +671,28 @@
 
                 reader.readAsDataURL(fileInput.files[0]);
             }
+
+           
         }
+
+     function alertt() {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover it!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                // Jika pengguna menekan tombol "OK", kirimkan formulir penghapusan
+                document.getElementById("deleteForm").submit();
+            }
+        });
+
+
+        
+     }   
 
     //     $('#edit_hewan_modal').on('show.bs.modal', function (event) {
     //     var button = $(event.relatedTarget);

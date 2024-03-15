@@ -102,18 +102,40 @@ class PetController extends Controller
 
 
         $validatedData = $request->validate([
-            'name' => 'required|min:4|max:255',
-            'species' => 'required|min:4|max:255',
-            'photo' => 'required' // Anda bisa menambahkan aturan validasi untuk file gambar di sini
+            'name1' => 'required|min:4|max:255',
+            'species1' => 'required|min:4|max:255',
+            // 'photo' => 'required|image' // Anda bisa menambahkan aturan validasi untuk file gambar di sini
         ]);
 
         // Pastikan file yang diunggah adalah gambar sebelum menyimpannya
+        if ($request->hasFile('photo1')) {
+            // Jika ada file yang diunggah, lakukan validasi untuk file
+            $request->validate([
+                'photo1' => 'image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
+            ]);
+    
+            // Simpan file yang diunggah
+            $validatedData['photo1'] = $request->file('photo1')->store('post-images');
+
+            if($request->oldImage1){
+                Storage::delete($request->oldImage1);
+            }
+
+        } else {
+            // Jika tidak ada file yang diunggah, gunakan nilai default dari kolom foto
+            $validatedData['photo1'] = $request->input('oldImage1');
+        }
 
 
         $validatedData['user_id'] = auth()->user()->id;
+        
+        Pet::where('id', $pet->id)->update([
+            'name' => $validatedData['name1'],
+            'species' => $validatedData['species1'],
+            'photo' => $validatedData['photo1'],
+        ]);
 
-        // Update data hewan dengan data yang divalidasi
-        Pet::find($pet)->update($validatedData);
+        
 
         return redirect('/pet')->with('success', 'Pet has been updated');
     }

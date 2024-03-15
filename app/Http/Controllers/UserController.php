@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -71,14 +72,37 @@ class UserController extends Controller
     {
         // $user = User::where('id', auth()->user()->id)->first();
 
-        $user->where('id', auth()->user()->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'phone' => $request->phone,
+        $validatedDataUser = $request->validate([
+            'name' => 'required|min:4|max:255',
+            'email' => 'required|email',
+            // 'photo' => 'required|image',
+            'address' => 'required|min:4',
+            'phone' => 'required|min:6',
+    
+            // Anda bisa menambahkan aturan validasi untuk file gambar di sini
         ]);
 
-        return redirect()->back();
+        if ($request->hasFile('photo')) {
+            // Jika ada file yang diunggah, lakukan validasi untuk file
+            $request->validate([
+                'photo' => 'unique:pets|image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
+            ]);
+    
+            // Simpan file yang diunggah
+            $validatedData['photo'] = $request->file('photo')->store('post-images');
+
+            if($request->oldImageUser){
+                Storage::delete($request->oldImageUser);
+            }
+            
+        } else {
+            // Jika tidak ada file yang diunggah, gunakan nilai default dari kolom foto
+            $validatedData['photo'] = $request->input('oldImage');
+        }
+
+        User::where('id', auth()->user()->id)->update($validatedDataUser);
+
+        return redirect()->back()->with('success', 'User has been updated');
     }
 
     public function editPass(Request $request ,User $user)

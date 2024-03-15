@@ -51,7 +51,7 @@ class FeedScheduleController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', ' Schedule Has Been Set');
     }
     public function drinkSchedulePage(FeedScheduleTime $feedScheduleTime)
     {

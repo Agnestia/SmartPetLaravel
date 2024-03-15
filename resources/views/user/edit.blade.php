@@ -13,6 +13,9 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
+    
+ {{-- sweet alert --}}
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
@@ -295,56 +298,104 @@
                 <!-- Main Content -->
                 <div class="container">
                     <div class="container row">
-                        <!-- foto -->
-                        <div class="container col-lg-3">
-                            <div class="d-flex justify-content-center mb-4">
-                                <img id="selectedAvatar" src="./img/ramadhanfoto.png" class="rounded-circle"
-                                    style="width: 150px; height: 150px; object-fit: cover;" alt="example placeholder" />
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <div class="btn btn-primary btn-rounded">
-                                    <label class="form-label text-white m-1" for="inputPhoto">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            fill="currentColor" class="bi bi-plus" viewBox="0 0 15 15">
-                                            <path
-                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                        </svg>
-                                    </label>
-                                    <input type="file" class="form-control d-none" id="inputPhoto"
-                                        onchange="displaySelectedImage(event, 'selectedAvatar')" />
-                                </div>
-                            </div>
-                        </div>
+
+                        
+                       
                         <!-- form edit -->
                         <div class="container col-lg-9 bg-white px-5 pt-4 rounded shadow">
-                            <form action={{ route('user.edit') }} method="POST" class="pt-1">
+
+                            @if (session()->has('success'))
+                            <script>
+                               
+                                    // Panggil SweetAlert setelah dokumen selesai dimuat
+                                    swal("Success!", "{{ session('success') }}", "success");
+                               
+                            </script>
+                        @endif
+
+                            @error('photo')
+                           
+                        <div  class="alert alert-danger col-lg-9" role="alert">
+                           {{ $message }}
+                          </div>
+                          @enderror
+
+                            <form action={{ route('user.edit') }} method="POST" class="pt-1" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+
+                                <div class="container col-lg-3 mb-3">
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <img id="selectedAvatarUser" src="{{ asset('storage/' . Auth::user()->photo)}}" class="rounded-circle"
+                                            style="width: 150px; height: 150px; object-fit: cover;" alt="" />
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="btn btn-primary btn-rounded mt-1">
+                                            
+                                            <label class="form-label text-white m-1" for="inputPhotoUser">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-plus" viewBox="0 0 15 15">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                </svg>
+                                            </label>
+                                            <input type="hidden" name="oldImageUser" value="{{ Auth::user()->photo }}">
+                                            <input type="file" class="form-control d-none" name="photo" id="inputPhotoUser"
+                                                onchange="displaySelectedImage(event, 'selectedAvatarUser')">
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="inputNama" class="col-form-label col-md-1">Nama</label>
                                     <div class="col-lg-11">
-                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control" id="inputNama" placeholder="Ramadhan">
+                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="inputNama" placeholder="Ramadhan">
+
+                                                        @error('name')
+                                                        <div  class="invalid-feedback">
+                                                           {{ $message }}
+                                                          </div>
+                                                          @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputAlamat" class="col-form-label col-md-1">Alamat</label>
                                     <div class="col-lg-11">
-                                        <input value="{{ old('address', Auth::user()->address )}}" name="address" type="text" class="form-control" id="inputAlamat"
+                                        <input value="{{ old('address', Auth::user()->address )}}" name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="inputAlamat"
                                             placeholder="Jl. semarang 44">
+
+                                            @error('address')
+                                            <div  class="invalid-feedback">
+                                               {{ $message }}
+                                              </div>
+                                              @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputTelepon" class="col-form-label col-md-1">No.Tlp</label>
                                     <div class="col-lg-11">
-                                        <input name="phone" value="{{ old('phone', Auth::user()->phone ) }}" type="text" class="form-control" id="inputTelepon"
+                                        <input name="phone" value="{{ old('phone', Auth::user()->phone ) }}" type="text" class="form-control @error('phone') is-invalid @enderror" id="inputTelepon"
                                             placeholder="086951442">
+
+                                            @error('phone')
+                                            <div  class="invalid-feedback">
+                                               {{ $message }}
+                                              </div>
+                                              @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputEmail" class="col-form-label col-md-1">Email</label>
                                     <div class="col-lg-11">
-                                        <input value={{ old('email', Auth::user()->email) }} name="email" type="email" class="form-control" id="inputEmail"
+                                        <input value={{ old('email', Auth::user()->email) }} name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail"
                                             placeholder="ramadhan@gmail.com">
+
+                                            @error('email')
+                                            <div  class="invalid-feedback">
+                                               {{ $message }}
+                                              </div>
+                                              @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row text-right">
@@ -404,12 +455,14 @@
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
+   
+
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-pie2-demo.js"></script>
     <script src="js/ruang-admin.js"></script>
     <script>
-        function displaySelectedImage(event, elementId) {
+       function displaySelectedImage(event, elementId) {
             const selectedImage = document.getElementById(elementId);
             const fileInput = event.target;
 
@@ -422,6 +475,7 @@
 
                 reader.readAsDataURL(fileInput.files[0]);
             }
+           
         }
     </script>
 </body>
