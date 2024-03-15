@@ -27,6 +27,17 @@ class PetController extends Controller
         return view('pet.location', compact('pets'));
     }
 
+    public function sendLocation(Request $request, Pet $pet){
+        $result = $pet->where('id', $request->id)->update([
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
+        ]);
+
+        return response()->json([
+            'success' => boolval($result)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
