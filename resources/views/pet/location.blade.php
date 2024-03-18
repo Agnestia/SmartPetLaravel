@@ -425,7 +425,6 @@
                     <ul style="list-style-type: none;">
                         @foreach ($pets as $index=>$pet)
                             <li><a href="#" onclick="goToLocation({{ $index+1 }})">{{ $index+1 }}. {{ $pet->name }}</a></li>
-
                         @endforeach
                     </ul>
                 </div>
@@ -433,6 +432,13 @@
                 <div id="map" style="height: 400px;"></div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
+                <script>
+                    setInterval(() => {
+                        location.reload()
+                    }, 18000);
+                </script>
+
                 <script>
                     var initialLatitude = -6.2088;
                     var initialLongitude = 106.8456;

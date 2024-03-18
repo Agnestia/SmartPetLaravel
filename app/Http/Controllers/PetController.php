@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -113,7 +114,7 @@ class PetController extends Controller
             $request->validate([
                 'photo1' => 'image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
             ]);
-    
+
             // Simpan file yang diunggah
             $validatedData['photo1'] = $request->file('photo1')->store('post-images');
 
@@ -128,14 +129,14 @@ class PetController extends Controller
 
 
         $validatedData['user_id'] = auth()->user()->id;
-        
+
         Pet::where('id', $pet->id)->update([
             'name' => $validatedData['name1'],
             'species' => $validatedData['species1'],
             'photo' => $validatedData['photo1'],
         ]);
 
-        
+
 
         return redirect('/pet')->with('success', 'Pet has been updated');
     }
