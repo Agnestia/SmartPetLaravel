@@ -436,7 +436,7 @@
                 <script>
                     setInterval(() => {
                         location.reload()
-                    }, 18000);
+                    }, 1800000);
                 </script>
 
                 <script>
