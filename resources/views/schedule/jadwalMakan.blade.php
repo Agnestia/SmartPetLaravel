@@ -365,13 +365,13 @@
                                         @if (session()->has('success'))
 
                                         <script>
-                                                   
+
                                             // Panggil SweetAlert setelah dokumen selesai dimuat
                                             swal("Success!", "{{ session('success') }}", "success");
-                                       
+
                                        </script>
-                    
-                    
+
+
                                         @endif
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center"style=" font-size: 14px;">
@@ -447,7 +447,8 @@
                                 <div class="container d-flex justify-content-center-start ">
                                     <h4 class="mt-3"style="color: black;">Jadwal Makanan Otomatis</h4>
                                 </div>
-                                <form action="">
+                                <form action={{ route('feed.manual') }} method="POST">
+                                    @csrf
                                     <div class="row">
 
                                         <div class="col-md-9 mt-2">
@@ -455,7 +456,7 @@
                                                 <label for="inputJenisHewan"
                                                     class="col-form-label col-md-3">Berat</label>
                                                 <div class="col-lg-9 pl-5">
-                                                    <input type="number" class="form-control form-control-sm"
+                                                    <input name="amount" type="number" class="form-control form-control-sm"
                                                         id="inputJenisHewan" placeholder="Per Gram"
                                                         style="width: 150px">
                                                 </div>

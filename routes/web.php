@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedManualController;
 use App\Http\Controllers\FeedScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
@@ -32,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit_user', [UserController::class, 'editPage'])->name('user.editPage');
     Route::put('edit_user', [UserController::class, 'edit'])->name('user.edit');
     Route::put('edit_pass', [UserController::class, 'editPass'])->name('user.edit.pass');
+
+    Route::post('manual-feed', [FeedManualController::class, 'store'])->name('feed.manual');
+    Route::get('manual-feed', [FeedManualController::class, 'openManual'])->name('feed.manual');
 });
 
 Route::middleware(['guest'])->group(function () {
