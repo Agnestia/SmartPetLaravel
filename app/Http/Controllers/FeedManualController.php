@@ -31,6 +31,10 @@ class FeedManualController extends Controller
 
     public function closeManual(Request $request ,FeedManual $feedManual)
     {
-        $feedManual->where('id', $request->id)->delete();
+        $deleteFeedManual = $feedManual->where('id', $request->id)->delete();
+
+        return response()->json([
+            'status' => boolval($deleteFeedManual)
+        ]);
     }
 }
