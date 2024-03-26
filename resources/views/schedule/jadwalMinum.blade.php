@@ -24,9 +24,9 @@
     <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block " href="index.html">
         <div class="sidebar-brand-icon">
-          <img class="img-fluid" src="img/ramadhanfoto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
+          <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
           <div class="sidebar-brand-text mx-3">
-            <div style="margin-bottom: 10px;">Ramadhan</div>
+            <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
             <span>online</span>
           </div>
         </div>
@@ -441,13 +441,13 @@
                                         @if (session()->has('success'))
 
                                         <script>
-                                                   
+
                                             // Panggil SweetAlert setelah dokumen selesai dimuat
                                             swal("Success!", "{{ session('success') }}", "success");
-                                       
+
                                        </script>
-                    
-                    
+
+
                                         @endif
                                         <div class="table-responsive">
                                         <table class="table table-bordered text-center"style=" font-size: 14px;">

@@ -13,7 +13,7 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
-    
+
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
@@ -25,9 +25,9 @@
     <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block " href="index.html">
         <div class="sidebar-brand-icon">
-          <img class="img-fluid" src="img/ramadhanfoto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
+          <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
           <div class="sidebar-brand-text mx-3">
-            <div style="margin-bottom: 10px;">Ramadhan</div>
+            <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
             <span>online</span>
           </div>
         </div>
@@ -302,14 +302,14 @@
 
                                 @error('photo')
                                 <script>
-                                                       
+
                                     // Panggil SweetAlert setelah dokumen selesai dimuat
                                     swal("Gagal!", "{{ $message }}", "error");
-                               
+
                                </script>
                                   @enderror
 
-                                 
+
 
                                 <div class="container d-flex justify-content-center">
                                     <h1 class="h2 mt-3 mb-3">Tambah Hewan</h1>
@@ -320,7 +320,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-center mb-3">
-                                                    <img id="selectedAvatar" src="./img/ramadhanfoto.png"
+                                                    <img id="selectedAvatar" src="./img/{{ Auth::user()->name }}foto.png"
                                                         class="rounded-circle"
                                                         style="width: 103px; height: 103px; object-fit: cover;"
                                                         alt="" />
@@ -393,7 +393,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-center mb-3">
-                                                    <img id="selectedAvatar2" src="./img/ramadhanfoto.png"
+                                                    <img id="selectedAvatar2" src="./img/{{ Auth::user()->name }}foto.png"
                                                         class="rounded-circle"
                                                         style="width: 103px; height: 103px; object-fit: cover;"
                                                         alt="" />
@@ -448,10 +448,10 @@
                     @if (session()->has('success'))
 
                     <script>
-                               
+
                         // Panggil SweetAlert setelah dokumen selesai dimuat
                         swal("Success!", "{{ session('success') }}", "success");
-                   
+
                    </script>
 
 
@@ -483,7 +483,7 @@
                                         <!-- start modal -->
                                        @include('pet.modal')
                                         <!-- end modal -->
-                                        
+
 
                                         <form id="deleteForm" action="/pet/{{ $pet->id }}" method="post" class="d-inline">
                                           @method('delete')
@@ -523,7 +523,7 @@
                       </div>
                       @enderror
                     <!-- form modal -->
-                   
+
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -594,13 +594,13 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    
+
                                     <div class="col-lg-10">
                                         <input type="hidden" name="pet_id" id="inputIdHewan" value="">
 
-                                        
 
-                                           
+
+
 
                                     </div>
                                 </div>
@@ -615,7 +615,7 @@
                                     class="btn btn-primary" data-dismiss="modal">Submit</button>
                             </div>
                         </div>
-                    
+
                 </div>
               </form>
             </div>
@@ -631,8 +631,8 @@
         </div>
     </div>
 
-     
-      
+
+
 
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -642,7 +642,7 @@
 
 
 
-    
+
     <!-- Page level plugins -->
     {{-- <script src="vendor/chart.js/Chart.min.js"></script>
     <!-- Page level custom scripts -->
@@ -656,7 +656,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
-        
+
     <script>
         function displaySelectedImage(event, elementId) {
             const selectedImage = document.getElementById(elementId);
@@ -672,7 +672,7 @@
                 reader.readAsDataURL(fileInput.files[0]);
             }
 
-           
+
         }
 
      function alertt() {
@@ -691,8 +691,8 @@
         });
 
 
-        
-     }   
+
+     }
 
     //     $('#edit_hewan_modal').on('show.bs.modal', function (event) {
     //     var button = $(event.relatedTarget);

@@ -13,7 +13,7 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
-    
+
  {{-- sweet alert --}}
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
@@ -25,9 +25,9 @@
     <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block " href="index.html">
         <div class="sidebar-brand-icon">
-          <img class="img-fluid" src="img/ramadhanfoto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
+          <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
           <div class="sidebar-brand-text mx-3">
-            <div style="margin-bottom: 10px;">Ramadhan</div>
+            <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
             <span>online</span>
           </div>
         </div>
@@ -299,22 +299,22 @@
                 <div class="container">
                     <div class="container row">
 
-                        
-                       
+
+
                         <!-- form edit -->
                         <div class="container col-lg-9 bg-white px-5 pt-4 rounded shadow">
 
                             @if (session()->has('success'))
                             <script>
-                               
+
                                     // Panggil SweetAlert setelah dokumen selesai dimuat
                                     swal("Success!", "{{ session('success') }}", "success");
-                               
+
                             </script>
                         @endif
 
                             @error('photo')
-                           
+
                         <div  class="alert alert-danger col-lg-9" role="alert">
                            {{ $message }}
                           </div>
@@ -331,7 +331,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <div class="btn btn-primary btn-rounded mt-1">
-                                            
+
                                             <label class="form-label text-white m-1" for="inputPhotoUser">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     fill="currentColor" class="bi bi-plus" viewBox="0 0 15 15">
@@ -342,7 +342,7 @@
                                             <input type="hidden" name="oldImageUser" value="{{ Auth::user()->photo }}">
                                             <input type="file" class="form-control d-none" name="photo" id="inputPhotoUser"
                                                 onchange="displaySelectedImage(event, 'selectedAvatarUser')">
-                                          
+
                                         </div>
                                     </div>
                                 </div>
@@ -350,7 +350,7 @@
                                 <div class="form-group row">
                                     <label for="inputNama" class="col-form-label col-md-1">Nama</label>
                                     <div class="col-lg-11">
-                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="inputNama" placeholder="Ramadhan">
+                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="inputNama" placeholder="{{ Auth::user()->name }}">
 
                                                         @error('name')
                                                         <div  class="invalid-feedback">
@@ -389,7 +389,7 @@
                                     <label for="inputEmail" class="col-form-label col-md-1">Email</label>
                                     <div class="col-lg-11">
                                         <input value={{ old('email', Auth::user()->email) }} name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail"
-                                            placeholder="ramadhan@gmail.com">
+                                            placeholder="{{ Auth::user()->name }}@gmail.com">
 
                                             @error('email')
                                             <div  class="invalid-feedback">
@@ -455,7 +455,7 @@
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-   
+
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-pie-demo.js"></script>
@@ -475,7 +475,7 @@
 
                 reader.readAsDataURL(fileInput.files[0]);
             }
-           
+
         }
     </script>
 </body>
