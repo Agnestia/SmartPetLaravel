@@ -25,7 +25,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block "
                 href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png"
+                    <img class="img-fluid" src="{{ asset(Auth::user()->photo) }}"
                         style="width: 100px; max-height: 100px; margin-bottom: 20px;">
                     <div class="sidebar-brand-text mx-3">
                         <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>

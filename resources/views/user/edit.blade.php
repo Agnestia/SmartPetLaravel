@@ -14,94 +14,96 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
 
- {{-- sweet alert --}}
- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- sweet alert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
 </head>
 
 <body id="page-top">
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block " href="index.html">
-        <div class="sidebar-brand-icon">
-          <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
-          <div class="sidebar-brand-text mx-3">
-            <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
-            <span>online</span>
-          </div>
-        </div>
-      </a>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block "
+                href="index.html">
+                <div class="sidebar-brand-icon">
+                    <img class="img-fluid" src="img/{{ Auth::user()->name }}foto.png"
+                        style="width: 100px; max-height: 100px; margin-bottom: 20px;">
+                    <div class="sidebar-brand-text mx-3">
+                        <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
+                        <span>online</span>
+                    </div>
+                </div>
+            </a>
 
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Features
-      </div>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Features
+            </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('pet.location') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Lokasi Hewan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('pet.location') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Lokasi Hewan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Atur Makanan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Atur Makanan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Atur Minuman</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Atur Minuman</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.editPage') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Edit User</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.editPage') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Edit User</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link"href="/pet">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Edit hewan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/pet">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Edit hewan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('logout') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Logout</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Register</span>
-        </a>
-      </li>
-
-
-      <hr class="sidebar-divider">
-      <div class="version" id="version-ruangadmin"></div>
-    </ul>
-    <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Register</span>
+                </a>
+            </li>
 
 
-    <!-- end sidebar -->
+            <hr class="sidebar-divider">
+            <div class="version" id="version-ruangadmin"></div>
+        </ul>
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+
+                <!-- end sidebar -->
                 <!-- TopBar -->
                 <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
                     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
@@ -149,7 +151,8 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to
+                                            download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -174,7 +177,8 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                    Alerts</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -190,7 +194,8 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
+                                        <img class="rounded-circle" src="img/man.png" style="max-width: 60px"
+                                            alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -202,7 +207,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
+                                        <img class="rounded-circle" src="img/girl.png" style="max-width: 60px"
+                                            alt="">
                                         <div class="status-indicator bg-default"></div>
                                     </div>
                                     <div>
@@ -212,7 +218,8 @@
                                         <div class="small text-gray-500">Jaenab · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
+                                    Messages</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -232,8 +239,9 @@
                                             <div class="small float-right"><b>50%</b></div>
                                         </div>
                                         <div class="progress" style="height: 12px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -243,8 +251,9 @@
                                             <div class="small float-right"><b>30%</b></div>
                                         </div>
                                         <div class="progress" style="height: 12px;">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
-                                                aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -259,7 +268,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">View All
+                                    Taks</a>
                             </div>
                         </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -305,28 +315,28 @@
                         <div class="container col-lg-9 bg-white px-5 pt-4 rounded shadow">
 
                             @if (session()->has('success'))
-                            <script>
-
+                                <script>
                                     // Panggil SweetAlert setelah dokumen selesai dimuat
                                     swal("Success!", "{{ session('success') }}", "success");
-
-                            </script>
-                        @endif
+                                </script>
+                            @endif
 
                             @error('photo')
+                                <div class="alert alert-danger col-lg-9" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
-                        <div  class="alert alert-danger col-lg-9" role="alert">
-                           {{ $message }}
-                          </div>
-                          @enderror
-
-                            <form action={{ route('user.edit') }} method="POST" class="pt-1" enctype="multipart/form-data">
+                            <form action={{ route('user.edit') }} method="POST" class="pt-1"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="container col-lg-3 mb-3">
                                     <div class="d-flex justify-content-center mb-4">
-                                        <img id="selectedAvatarUser" src="{{ asset('storage/' . Auth::user()->photo)}}" class="rounded-circle"
+                                        <img id="selectedAvatarUser"
+                                            src="{{ asset('storage/' . Auth::user()->photo) }}"
+                                            class="rounded-circle"
                                             style="width: 150px; height: 150px; object-fit: cover;" alt="" />
                                     </div>
                                     <div class="d-flex justify-content-center">
@@ -339,8 +349,10 @@
                                                         d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                                                 </svg>
                                             </label>
-                                            <input type="hidden" name="oldImageUser" value="{{ Auth::user()->photo }}">
-                                            <input type="file" class="form-control d-none" name="photo" id="inputPhotoUser"
+                                            <input type="hidden" name="oldImageUser"
+                                                value="{{ Auth::user()->photo }}">
+                                            <input type="file" class="form-control d-none" name="photo"
+                                                id="inputPhotoUser"
                                                 onchange="displaySelectedImage(event, 'selectedAvatarUser')">
 
                                         </div>
@@ -350,52 +362,57 @@
                                 <div class="form-group row">
                                     <label for="inputNama" class="col-form-label col-md-1">Nama</label>
                                     <div class="col-lg-11">
-                                        <input value="{{ old('name', Auth::user()->name) }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="inputNama" placeholder="{{ Auth::user()->name }}">
+                                        <input value="{{ old('name', Auth::user()->name) }}" name="name"
+                                            type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="inputNama" placeholder="{{ Auth::user()->name }}">
 
-                                                        @error('name')
-                                                        <div  class="invalid-feedback">
-                                                           {{ $message }}
-                                                          </div>
-                                                          @enderror
+                                        @error('name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputAlamat" class="col-form-label col-md-1">Alamat</label>
                                     <div class="col-lg-11">
-                                        <input value="{{ old('address', Auth::user()->address )}}" name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="inputAlamat"
-                                            placeholder="Jl. semarang 44">
+                                        <input value="{{ old('address', Auth::user()->address) }}" name="address"
+                                            type="text" class="form-control @error('address') is-invalid @enderror"
+                                            id="inputAlamat" placeholder="Jl. semarang 44">
 
-                                            @error('address')
-                                            <div  class="invalid-feedback">
-                                               {{ $message }}
-                                              </div>
-                                              @enderror
+                                        @error('address')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputTelepon" class="col-form-label col-md-1">No.Tlp</label>
                                     <div class="col-lg-11">
-                                        <input name="phone" value="{{ old('phone', Auth::user()->phone ) }}" type="text" class="form-control @error('phone') is-invalid @enderror" id="inputTelepon"
-                                            placeholder="086951442">
+                                        <input name="phone" value="{{ old('phone', Auth::user()->phone) }}"
+                                            type="text" class="form-control @error('phone') is-invalid @enderror"
+                                            id="inputTelepon" placeholder="086951442">
 
-                                            @error('phone')
-                                            <div  class="invalid-feedback">
-                                               {{ $message }}
-                                              </div>
-                                              @enderror
+                                        @error('phone')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputEmail" class="col-form-label col-md-1">Email</label>
                                     <div class="col-lg-11">
-                                        <input value={{ old('email', Auth::user()->email) }} name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail"
-                                            placeholder="{{ Auth::user()->name }}@gmail.com">
+                                        <input value={{ old('email', Auth::user()->email) }} name="email"
+                                            type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="inputEmail" placeholder="{{ Auth::user()->name }}@gmail.com">
 
-                                            @error('email')
-                                            <div  class="invalid-feedback">
-                                               {{ $message }}
-                                              </div>
-                                              @enderror
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row text-right">
@@ -413,20 +430,20 @@
                                 @method('PUT')
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input name="old_password" type="password" class="form-control" id="passwordLama"
-                                            placeholder="Password">
+                                        <input name="old_password" type="password" class="form-control"
+                                            id="passwordLama" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input name="password" type="password" class="form-control" id="passwordBaru"
-                                            placeholder="Password Baru">
+                                        <input name="password" type="password" class="form-control"
+                                            id="passwordBaru" placeholder="Password Baru">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-11">
-                                        <input name="password_confirmation" type="password" class="form-control" id="konfirmasiPassword"
-                                            placeholder="Konfirmasi Password">
+                                        <input name="password_confirmation" type="password" class="form-control"
+                                            id="konfirmasiPassword" placeholder="Konfirmasi Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -446,38 +463,38 @@
                 <!---Main Content -->
             </div>
 
-    <!-- Scroll to top -->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+            <!-- Scroll to top -->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
 
 
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
 
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-pie2-demo.js"></script>
-    <script src="js/ruang-admin.js"></script>
-    <script>
-       function displaySelectedImage(event, elementId) {
-            const selectedImage = document.getElementById(elementId);
-            const fileInput = event.target;
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-pie-demo.js"></script>
+            <script src="js/demo/chart-pie2-demo.js"></script>
+            <script src="js/ruang-admin.js"></script>
+            <script>
+                function displaySelectedImage(event, elementId) {
+                    const selectedImage = document.getElementById(elementId);
+                    const fileInput = event.target;
 
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
+                    if (fileInput.files && fileInput.files[0]) {
+                        const reader = new FileReader();
 
-                reader.onload = function (e) {
-                    selectedImage.src = e.target.result;
-                };
+                        reader.onload = function(e) {
+                            selectedImage.src = e.target.result;
+                        };
 
-                reader.readAsDataURL(fileInput.files[0]);
-            }
+                        reader.readAsDataURL(fileInput.files[0]);
+                    }
 
-        }
-    </script>
+                }
+            </script>
 </body>
 </body>
 
