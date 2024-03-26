@@ -70,45 +70,34 @@ class UserController extends Controller
 
     public function edit(Request $request, User $user)
     {
-        // $user = User::where('id', auth()->user()->id)->first();
-
-        $validatedDataUser = $request->validate([
-            'name' => 'required|min:4|max:255',
-            'email' => 'required|email',
-            // 'photo' => 'required|image',
-            'address' => 'required|min:4',
-            'phone' => 'required|min:6',
-    
-            // Anda bisa menambahkan aturan validasi untuk file gambar di sini
+        $validatedData = $request->validate([
+            'name' => '',
+            'email' => '|email',
+            'photo' => 'image',
+            'address' => '',
+            'phone' => '',
         ]);
 
         if ($request->hasFile('photo')) {
-            // Jika ada file yang diunggah, lakukan validasi untuk file
-            $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg,gif', // Contoh validasi untuk jenis file gambar
-            ]);
-    
-            // Simpan file yang diunggah
-            $validatedDataUser['photo'] = $request->file('photo')->store('post-images');
-
-            if($request->oldImageUser){
-                Storage::delete($request->oldImageUser);
+            $request->file('photo')->store('public/user');
+            $validatedData['photo'] = "/storage/user/" . $request->file('photo')->hashName();
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
             }
-            
         } else {
-            // Jika tidak ada file yang diunggah, gunakan nilai default dari kolom foto
-            $validatedDataUser['photo'] = $request->input('oldImageUser');
+            $validatedData['photo'] = $request->input('oldImage');
         }
 
-        User::where('id', auth()->user()->id)->update($validatedDataUser);
+        $user->where('id', auth()->user()->id)->update($validatedData);
 
         return redirect()->back()->with('success', 'User has been updated');
     }
 
-    public function editPass(Request $request ,User $user)
+
+
+    public function editPass(Request $request, User $user)
     {
-        if(Hash::check($request->old_password, $user->password))
-        {
+        if (Hash::check($request->old_password, $user->password)) {
             $user->where('id', auth()->user()->id)->update([
                 'password' => Hash::make($request->new_password),
             ]);
