@@ -79,7 +79,8 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $validatedData['photo'] = $request->file('photo')->store('public/user');
+            $request->file('photo')->store('public/user');
+            $validatedData['photo'] = "/storage/user/" . $request->file('photo')->hashName();
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
