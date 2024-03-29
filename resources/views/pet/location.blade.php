@@ -183,7 +183,7 @@
                     <div>
                       <div class="small text-gray-500">December 12, 2019</div>
                       <span class="font-weight-bold"
-                        >A new monthly report is ready to download!</span
+                        >Kucing kamu belum di kasih makan</span
                       >
                     </div>
                   </a>
@@ -195,7 +195,7 @@
                     </div>
                     <div>
                       <div class="small text-gray-500">December 7, 2019</div>
-                      $290.29 has been deposited into your account!
+                      alat makan sudah terbuka 
                     </div>
                   </a>
                   <a class="dropdown-item d-flex align-items-center" href="#">
