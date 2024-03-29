@@ -335,7 +335,7 @@
                                 <div class="container col-lg-3 mb-3">
                                     <div class="d-flex justify-content-center mb-4">
                                         <img id="selectedAvatarUser"
-                                            src="{{ asset('storage/' . Auth::user()->photo) }}"
+                                            src="{{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}"
                                             class="rounded-circle"
                                             style="width: 150px; height: 150px; object-fit: cover;" alt="" />
                                     </div>
