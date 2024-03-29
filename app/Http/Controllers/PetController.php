@@ -28,7 +28,8 @@ class PetController extends Controller
         return view('pet.location', compact('pets'));
     }
 
-    public function sendLocation(Request $request, Pet $pet){
+    public function sendLocation(Request $request, Pet $pet)
+    {
         $result = $pet->where('id', $request->id)->update([
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
@@ -52,21 +53,24 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:4|max:255',
-            'species' => 'required|min:4|max:255',
-            'photo' => 'required'
+        return dd($request);
 
+        $request->validate([
+            'name' => 'required',
+            'species' => 'required',
+            'photo' => 'required',
         ]);
-
-        $validatedData['photo'] = $request->file('photo')->store('post-images');
-        $validatedData['user_id'] = auth()->user()->id; // untuk dimasukkan ke kolom user_id di tabel posts
-
-
-        Pet::create($validatedData);
-
-        return redirect('/pet')->with('success', 'New Pet Has Been Added');
+        $data = [
+            'name' => $request->input('name'),
+            'species' => $request->input('species'),
+            'photo' => "/storage/pet/" . $request->file('photo')->hashName(),
+            'user_id' => auth()->id(),
+        ];
+        $request->file('photo')->store('public/pet');
+        Pet::create($data);
+        return redirect('/pet')->with('success', 'New Pet Added');
     }
+
 
     /**
      * Display the specified resource.
@@ -118,10 +122,9 @@ class PetController extends Controller
             // Simpan file yang diunggah
             $validatedData['photo1'] = $request->file('photo1')->store('post-images');
 
-            if($request->oldImage1){
+            if ($request->oldImage1) {
                 Storage::delete($request->oldImage1);
             }
-
         } else {
             // Jika tidak ada file yang diunggah, gunakan nilai default dari kolom foto
             $validatedData['photo1'] = $request->input('oldImage1');
