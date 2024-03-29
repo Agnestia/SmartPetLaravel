@@ -1,3 +1,4 @@
+
 {{-- @dd($pet[1]) --}}
 
 <!DOCTYPE html>
@@ -373,9 +374,8 @@
                     src="img/boy.png"
                     style="max-width: 60px"
                   />
-                  <span class="ml-2 d-none d-lg-inline text-white small"
-                    >Maman Ketoprak</span
-                  >
+                  <div style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">{{ Auth::user()->name }}</div>
+                  
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
