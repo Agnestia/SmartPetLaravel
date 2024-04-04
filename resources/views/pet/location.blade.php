@@ -1,3 +1,4 @@
+
 {{-- @dd($pet[1]) --}}
 
 <!DOCTYPE html>
@@ -182,7 +183,7 @@
                     <div>
                       <div class="small text-gray-500">December 12, 2019</div>
                       <span class="font-weight-bold"
-                        >A new monthly report is ready to download!</span
+                        >Kucing kamu belum di kasih makan</span
                       >
                     </div>
                   </a>
@@ -194,7 +195,7 @@
                     </div>
                     <div>
                       <div class="small text-gray-500">December 7, 2019</div>
-                      $290.29 has been deposited into your account!
+                      alat makan sudah terbuka 
                     </div>
                   </a>
                   <a class="dropdown-item d-flex align-items-center" href="#">
@@ -368,14 +369,11 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
-                    class="img-profile rounded-circle"
-                    src="img/boy.png"
-                    style="max-width: 60px"
-                  />
-                  <span class="ml-2 d-none d-lg-inline text-white small"
-                    >Maman Ketoprak</span
-                  >
+                <img class="img-fluid rounded-circle" src="{{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}" style="width: 50px; max-height: 50px; margin-bottom: 5px; margin-top: 5px">
+
+
+                  <div style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">{{ Auth::user()->name }}</div>
+                  
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

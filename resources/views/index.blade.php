@@ -28,7 +28,7 @@
                     <img class="img-fluid" src={{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}
                         style="width: 100px; max-height: 100px; margin-bottom: 20px;">
                     <div class="sidebar-brand-text mx-3">
-                        <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
+                    <div style="margin-bottom: 5px; margin-right: 25px; margin-left: 10px;">{{ Auth::user()->name }}</div>
                         <span>online</span>
                     </div>
                 </div>
@@ -275,8 +275,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                                <img class="img-fluid rounded-circle" src="{{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}" style="width: 50px; max-height: 50px; margin-bottom: 5px; margin-top: 5px">
+                                <div style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">{{ Auth::user()->name }}</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
