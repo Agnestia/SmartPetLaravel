@@ -19,87 +19,90 @@
 </head>
 
 <body id="page-top">
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block " href="index.html">
-        <div class="sidebar-brand-icon">
-          <img class="img-fluid" src="{{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}" style="width: 100px; max-height: 100px; margin-bottom: 20px;">
-          <div class="sidebar-brand-text mx-3">
-            <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
-            <span>online</span>
-          </div>
-        </div>
-      </a>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion " id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block "
+                href="index.html">
+                <div class="sidebar-brand-icon">
+                    <img class="img-fluid"
+                        src="{{ Auth::user()->photo == null ? 'https://ui-avatars.com/api/?name=' . Auth::user()->name . '&background=0D8ABC&color=fff&rounded=true&bold=true' : asset(Auth::user()->photo) }}"
+                        style="width: 100px; max-height: 100px; margin-bottom: 20px;">
+                    <div class="sidebar-brand-text mx-3">
+                        <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
+                        <span>online</span>
+                    </div>
+                </div>
+            </a>
 
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Features
-      </div>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Features
+            </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('pet.location') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Lokasi Hewan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('pet.location') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Lokasi Hewan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Atur Makanan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('landing.jadwalMakan') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Atur Makanan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Atur Minuman</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('landing.jadwalMinum') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Atur Minuman</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.editPage') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Edit User</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.editPage') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Edit User</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link"href="/pet">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Edit hewan</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/pet">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Edit hewan</span>
+                </a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('logout') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Logout</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>Register</span>
-        </a>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Register</span>
+                </a>
+            </li>
 
 
-      <hr class="sidebar-divider">
-      <div class="version" id="version-ruangadmin"></div>
-    </ul>
-    <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
+            <hr class="sidebar-divider">
+            <div class="version" id="version-ruangadmin"></div>
+        </ul>
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
 
-    <!-- end sidebar -->
+                <!-- end sidebar -->
                 <!-- TopBar -->
                 <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
                     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
@@ -147,7 +150,8 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to
+                                            download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -172,7 +176,8 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                    Alerts</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -188,7 +193,8 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
+                                        <img class="rounded-circle" src="img/man.png" style="max-width: 60px"
+                                            alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -200,7 +206,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
+                                        <img class="rounded-circle" src="img/girl.png" style="max-width: 60px"
+                                            alt="">
                                         <div class="status-indicator bg-default"></div>
                                     </div>
                                     <div>
@@ -210,7 +217,8 @@
                                         <div class="small text-gray-500">Jaenab · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
+                                    Messages</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -230,8 +238,9 @@
                                             <div class="small float-right"><b>50%</b></div>
                                         </div>
                                         <div class="progress" style="height: 12px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -241,8 +250,9 @@
                                             <div class="small float-right"><b>30%</b></div>
                                         </div>
                                         <div class="progress" style="height: 12px;">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
-                                                aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -257,7 +267,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">View All
+                                    Taks</a>
                             </div>
                         </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -313,9 +324,15 @@
                                                     <input type="date" class="form-control form-control-sm "
                                                         id="inputNamaHewan" placeholder="Rocky" name="start_date"
                                                         style="width: 150px;">
+                                                    @error('start_date')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                     <input type="date" class="form-control form-control-sm mt-2"
                                                         id="inputNamaHewan" placeholder="Rocky" name="end_date"
                                                         style="width: 150px;">
+                                                    @error('end_date')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -325,6 +342,9 @@
                                                     <input type="number" class="form-control form-control-sm"
                                                         id="inputJenisHewan" placeholder="Per Gram" name="amount"
                                                         style="width: 150px">
+                                                    @error('amount')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -335,6 +355,9 @@
                                                         <input type="time" class="form-control form-control-sm"
                                                             id="inputJenisHewan" placeholder="Kucing" name="time"
                                                             style="width: 150px;">
+                                                        @error('time')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <button type="button"
                                                             class="btn btn-sm btn-secondary ml-2 mt-2"
                                                             id="addInputJam">+</button>
@@ -363,10 +386,14 @@
                                                 <tbody>
                                                     @foreach ($feedScheduleTime as $feed)
                                                         <tr>
-                                                            <td class="table-light">{{ $feed->feedSchedule->start_date}}</td>
+                                                            <td class="table-light">
+                                                                {{ $feed->feedSchedule->start_date }}</td>
                                                             <td class="table-light">{{ $feed->time }}</td>
-                                                            <td class="table-light">{{ $feed->feedSchedule->amount }}gr</td>
-                                                            <td><span class={{ $feed->status ? "badge badge-success" : "badge badge-info" }}>{{ $feed->status ? "Success" : "pending" }}</span></td>
+                                                            <td class="table-light">
+                                                                {{ $feed->feedSchedule->amount }}gr</td>
+                                                            <td><span
+                                                                    class={{ $feed->status ? 'badge badge-success' : 'badge badge-info' }}>{{ $feed->status ? 'Success' : 'pending' }}</span>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
 
@@ -428,10 +455,12 @@
 
                                         <div class="col-md-9 mt-2">
                                             <div class="form-group row mt-4 md-2">
-                                                <label for="inputJenisHewan" class="col-form-label col-md-3">Berat</label>
+                                                <label for="inputJenisHewan"
+                                                    class="col-form-label col-md-3">Berat</label>
                                                 <div class="col-lg-9 pl-5">
-                                                    <input type="number" class="form-control form-control-sm" id="inputJenisHewan"
-                                                        placeholder="Per Gram" style="width: 150px">
+                                                    <input type="number" class="form-control form-control-sm"
+                                                        id="inputJenisHewan" placeholder="Per Gram"
+                                                        style="width: 150px">
                                                 </div>
                                             </div>
 
@@ -439,52 +468,48 @@
                                     </div>
                                     <div class="container">
                                         @if (session()->has('success'))
-
-                                        <script>
-
-                                            // Panggil SweetAlert setelah dokumen selesai dimuat
-                                            swal("Success!", "{{ session('success') }}", "success");
-
-                                       </script>
-
-
+                                            <script>
+                                                // Panggil SweetAlert setelah dokumen selesai dimuat
+                                                swal("Success!", "{{ session('success') }}", "success");
+                                            </script>
                                         @endif
                                         <div class="table-responsive">
-                                        <table class="table table-bordered text-center"style=" font-size: 14px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="table-active">Tanggal</th>
-                                                    <th class="table-active">Jam</th>
-                                                    <th class="table-active">Berat</th>
-                                                    <th class="table-active">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-success">checkist</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">27/02/2024</td>
-                                                    <td class="table-light">10.35</td>
-                                                    <td class="table-light">20 Gram</td>
-                                                    <td><span class="badge badge-info">Processing</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                    <td class="table-light">-</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                            <table class="table table-bordered text-center"style=" font-size: 14px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="table-active">Tanggal</th>
+                                                        <th class="table-active">Jam</th>
+                                                        <th class="table-active">Berat</th>
+                                                        <th class="table-active">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="table-light">27/02/2024</td>
+                                                        <td class="table-light">10.35</td>
+                                                        <td class="table-light">20 Gram</td>
+                                                        <td><span class="badge badge-success">checkist</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="table-light">27/02/2024</td>
+                                                        <td class="table-light">10.35</td>
+                                                        <td class="table-light">20 Gram</td>
+                                                        <td><span class="badge badge-info">Processing</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="table-light">-</td>
+                                                        <td class="table-light">-</td>
+                                                        <td class="table-light">-</td>
+                                                        <td class="table-light">-</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="form-group row text-right">
                                         <div class="col-lg-1">
-                                            <button type="submit" class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-4 py-2"style="background-color: #DFECFF;color: #095DFF; border-color: #000000">Submit</button>
                                         </div>
                                     </div>
 
@@ -522,7 +547,7 @@
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
 
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     selectedImage.src = e.target.result;
                 };
 

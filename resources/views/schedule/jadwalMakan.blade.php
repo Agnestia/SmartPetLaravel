@@ -26,7 +26,8 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center h-25 w-100 d-inline-block "
                 href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="img-fluid" src="{{ Auth::user()->photo == null ? "https://ui-avatars.com/api/?name=" . Auth::user()->name . "&background=0D8ABC&color=fff&rounded=true&bold=true" : asset(Auth::user()->photo) }}"
+                    <img class="img-fluid"
+                        src="{{ Auth::user()->photo == null ? 'https://ui-avatars.com/api/?name=' . Auth::user()->name . '&background=0D8ABC&color=fff&rounded=true&bold=true' : asset(Auth::user()->photo) }}"
                         style="width: 100px; max-height: 100px; margin-bottom: 20px;">
                     <div class="sidebar-brand-text mx-3">
                         <div style="margin-bottom: 10px;">{{ Auth::user()->name }}</div>
@@ -324,9 +325,15 @@
                                                     <input type="date" class="form-control form-control-sm "
                                                         id="inputNamaHewan" placeholder="Rocky" name="start_date"
                                                         style="width: 150px;">
+                                                    @error('start_date')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                     <input type="date" class="form-control form-control-sm mt-2"
                                                         id="inputNamaHewan" placeholder="Rocky" name="end_date"
                                                         style="width: 150px;">
+                                                    @error('end_date')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -336,6 +343,9 @@
                                                     <input type="number" class="form-control form-control-sm"
                                                         id="inputJenisHewan" placeholder="Per Gram" name="amount"
                                                         style="width: 150px">
+                                                    @error('amount')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -346,6 +356,9 @@
                                                         <input type="time" class="form-control form-control-sm"
                                                             id="inputJenisHewan" placeholder="Kucing" name="time"
                                                             style="width: 150px;">
+                                                        @error('time')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <button type="button"
                                                             class="btn btn-sm btn-secondary ml-2 mt-2"
                                                             id="addInputJam">+</button>
@@ -363,15 +376,10 @@
                                     <div class="container">
 
                                         @if (session()->has('success'))
-
-                                        <script>
-
-                                            // Panggil SweetAlert setelah dokumen selesai dimuat
-                                            swal("Success!", "{{ session('success') }}", "success");
-
-                                       </script>
-
-
+                                            <script>
+                                                // Panggil SweetAlert setelah dokumen selesai dimuat
+                                                swal("Success!", "{{ session('success') }}", "success");
+                                            </script>
                                         @endif
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center"style=" font-size: 14px;">
@@ -386,10 +394,14 @@
                                                 <tbody>
                                                     @foreach ($feedScheduleTime as $feed)
                                                         <tr>
-                                                            <td class="table-light">{{ $feed->feedSchedule->start_date}}</td>
+                                                            <td class="table-light">
+                                                                {{ $feed->feedSchedule->start_date }}</td>
                                                             <td class="table-light">{{ $feed->time }}</td>
-                                                            <td class="table-light">{{ $feed->feedSchedule->amount }}gr</td>
-                                                            <td><span class={{ $feed->status ? "badge badge-success" : "badge badge-info" }}>{{ $feed->status ? "Success" : "pending" }}</span></td>
+                                                            <td class="table-light">
+                                                                {{ $feed->feedSchedule->amount }}gr</td>
+                                                            <td><span
+                                                                    class={{ $feed->status ? 'badge badge-success' : 'badge badge-info' }}>{{ $feed->status ? 'Success' : 'pending' }}</span>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
 
@@ -456,9 +468,9 @@
                                                 <label for="inputJenisHewan"
                                                     class="col-form-label col-md-3">Berat</label>
                                                 <div class="col-lg-9 pl-5">
-                                                    <input name="amount" type="number" class="form-control form-control-sm"
-                                                        id="inputJenisHewan" placeholder="Per Gram"
-                                                        style="width: 150px">
+                                                    <input name="amount" type="number"
+                                                        class="form-control form-control-sm" id="inputJenisHewan"
+                                                        placeholder="Per Gram" style="width: 150px">
                                                 </div>
                                             </div>
 

@@ -18,6 +18,13 @@ class FeedScheduleController extends Controller
 
     public function store(Request $request, FeedScheduleTime $feedScheduleTime, FeedSchedule $feedSchedule, Auth $auth)
     {
+        $request->validate([
+            'amount' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'time' => 'required',
+        ]);
+
         $is_water = is_null($request->is_water) ? false : true;
 
         $feedSchedule->create([
